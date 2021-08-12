@@ -1,9 +1,11 @@
+
+
 CREATE TABLE [Student] (
-	id integer NOT NULL,
-	name varchar(35) NOT NULL,
-	surname varchar(35) NOT NULL,
+	id integer identity(1,1) NOT NULL,
+	name nvarchar(35) NOT NULL,
+	surname nvarchar(35) NOT NULL,
 	email varchar(150) NOT NULL UNIQUE,
-	password varchar(150) NOT NULL UNIQUE,
+	password varchar(150) NOT NULL,
   CONSTRAINT [PK_STUDENT] PRIMARY KEY CLUSTERED
   (
   [id] ASC
@@ -12,9 +14,9 @@ CREATE TABLE [Student] (
 )
 GO
 CREATE TABLE [Teacher] (
-	id integer NOT NULL,
-	name varchar(35) NOT NULL,
-	surname varchar(35) NOT NULL,
+	id integer identity(1,1) NOT NULL,
+	name nvarchar(35) NOT NULL,
+	surname nvarchar(35) NOT NULL,
 	email varchar(150) NOT NULL UNIQUE,
 	password varchar(150) NOT NULL,
   CONSTRAINT [PK_TEACHER] PRIMARY KEY CLUSTERED
@@ -25,9 +27,9 @@ CREATE TABLE [Teacher] (
 )
 GO
 CREATE TABLE [Admin] (
-	id integer NOT NULL,
+	id integer identity(1,1) NOT NULL,
 	email varchar(150) NOT NULL UNIQUE,
-	password varchar(150) NOT NULL UNIQUE,
+	password varchar(150) NOT NULL,
   CONSTRAINT [PK_ADMIN] PRIMARY KEY CLUSTERED
   (
   [id] ASC
@@ -36,8 +38,8 @@ CREATE TABLE [Admin] (
 )
 GO
 CREATE TABLE [Exam] (
-	id integer NOT NULL,
-	title varchar(155) NOT NULL,
+	id integer identity(1,1) NOT NULL,
+	title nvarchar(155) NOT NULL,
   CONSTRAINT [PK_EXAM] PRIMARY KEY CLUSTERED
   (
   [id] ASC
@@ -46,8 +48,8 @@ CREATE TABLE [Exam] (
 )
 GO
 CREATE TABLE [Question] (
-	id integer NOT NULL,
-	Text text NOT NULL,
+	id integer identity(1,1) NOT NULL,
+	Text ntext  NOT NULL,
 	correctVariant varchar(1) NOT NULL,
 	ExamID integer NOT NULL,
   CONSTRAINT [PK_QUESTION] PRIMARY KEY CLUSTERED
@@ -58,9 +60,9 @@ CREATE TABLE [Question] (
 )
 GO
 CREATE TABLE [Variant] (
-	id integer NOT NULL,
+	id integer identity(1,1) NOT NULL,
 	variantType varchar(1) NOT NULL,
-	variantText text NOT NULL,
+	variantText ntext NOT NULL,
 	question›d integer NOT NULL,
   CONSTRAINT [PK_VARIANT] PRIMARY KEY CLUSTERED
   (
@@ -70,7 +72,7 @@ CREATE TABLE [Variant] (
 )
 GO
 CREATE TABLE [TakeExam] (
-	id integer NOT NULL,
+	id integer identity(1,1) NOT NULL,
 	student_id integer NOT NULL,
 	exam_id integer NOT NULL,
 	date datetime NOT NULL,
