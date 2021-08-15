@@ -1,3 +1,30 @@
+SET NOCOUNT ON
+GO
+
+USE master
+GO
+if exists (select * from sysdatabases where name='QuizSystemDB')
+		drop database QuizSystemDB
+go
+
+DECLARE @device_directory NVARCHAR(520)
+SELECT @device_directory = SUBSTRING(filename, 1, CHARINDEX(N'master.mdf', LOWER(filename)) - 1)
+FROM master.dbo.sysaltfiles WHERE dbid = 1 AND fileid = 1
+
+EXECUTE (N'CREATE DATABASE QuizSystemDB
+  ON PRIMARY (NAME = N''QuizSystemDB'', FILENAME = N''' + @device_directory + N'quizsystemdb.mdf'')
+  LOG ON (NAME = N''QuizSystemDB_log'',  FILENAME = N''' + @device_directory + N'quizsystemdb.ldf'')')
+go
+
+GO
+
+set quoted_identifier on
+GO
+
+SET DATEFORMAT mdy
+GO
+use "QuizSystemDB"
+go
 CREATE TABLE [Student] (
 	id integer IDENTITY(1,1)  NOT NULL,
 	name nvarchar(35) NOT NULL,
@@ -47,7 +74,7 @@ CREATE TABLE [Exam] (
 GO
 CREATE TABLE [Question] (
 	id integer IDENTITY(1,1)  NOT NULL,
-	Text text NOT NULL,
+	Text ntext NOT NULL,
 	correctVariant nvarchar(1) NOT NULL,
 	ExamID integer NOT NULL,
   CONSTRAINT [PK_QUESTION] PRIMARY KEY CLUSTERED
@@ -60,7 +87,7 @@ GO
 CREATE TABLE [Variant] (
 	id integer IDENTITY(1,1)  NOT NULL,
 	variantType nvarchar(1) NOT NULL,
-	variantText text NOT NULL,
+	variantText ntext NOT NULL,
 	questionId integer NOT NULL,
   CONSTRAINT [PK_VARIANT] PRIMARY KEY CLUSTERED
   (
@@ -93,7 +120,7 @@ GO
 ALTER TABLE [Question] CHECK CONSTRAINT [Question_fk0]
 GO
 
-ALTER TABLE [Variant] WITH CHECK ADD CONSTRAINT [Variant_fk0] FOREIGN KEY ([questionÝd]) REFERENCES [Question]([id])
+ALTER TABLE [Variant] WITH CHECK ADD CONSTRAINT [Variant_fk0] FOREIGN KEY ([questionId]) REFERENCES [Question]([id])
 ON UPDATE CASCADE
 GO
 ALTER TABLE [Variant] CHECK CONSTRAINT [Variant_fk0]
