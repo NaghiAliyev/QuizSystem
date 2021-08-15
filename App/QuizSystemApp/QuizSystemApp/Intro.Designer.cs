@@ -99,6 +99,7 @@ namespace QuizSystemApp
             this.Name = "Intro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Giriş";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Intro_FormClosed);
             this.Load += new System.EventHandler(this.Intro_Load);
             this.Resize += new System.EventHandler(this.Intro_Resize);
             this.pnlContent.ResumeLayout(false);

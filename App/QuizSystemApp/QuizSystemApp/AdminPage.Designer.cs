@@ -30,12 +30,12 @@ namespace QuizSystemApp
         private void InitializeComponent()
         {
             this.pnlMenu = new System.Windows.Forms.Panel();
-            this.pnlActions = new System.Windows.Forms.Panel();
-            this.btnBackToLogin = new System.Windows.Forms.Button();
-            this.lblHomePage = new System.Windows.Forms.Label();
-            this.lblStudents = new System.Windows.Forms.Label();
-            this.lblTeachers = new System.Windows.Forms.Label();
             this.lblTests = new System.Windows.Forms.Label();
+            this.lblTeachers = new System.Windows.Forms.Label();
+            this.lblStudents = new System.Windows.Forms.Label();
+            this.lblHomePage = new System.Windows.Forms.Label();
+            this.btnBackToLogin = new System.Windows.Forms.Button();
+            this.pnlActions = new System.Windows.Forms.Panel();
             this.pnlMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,25 +49,38 @@ namespace QuizSystemApp
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 495);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 518);
             this.pnlMenu.TabIndex = 0;
             // 
-            // pnlActions
+            // lblTests
             // 
-            this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlActions.Location = new System.Drawing.Point(200, 0);
-            this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(428, 495);
-            this.pnlActions.TabIndex = 0;
+            this.lblTests.AutoSize = true;
+            this.lblTests.Location = new System.Drawing.Point(59, 246);
+            this.lblTests.Name = "lblTests";
+            this.lblTests.Size = new System.Drawing.Size(58, 21);
+            this.lblTests.TabIndex = 4;
+            this.lblTests.Text = "Testlər";
+            this.lblTests.Click += new System.EventHandler(this.lblTests_Click);
             // 
-            // btnBackToLogin
+            // lblTeachers
             // 
-            this.btnBackToLogin.Location = new System.Drawing.Point(12, 12);
-            this.btnBackToLogin.Name = "btnBackToLogin";
-            this.btnBackToLogin.Size = new System.Drawing.Size(48, 45);
-            this.btnBackToLogin.TabIndex = 0;
-            this.btnBackToLogin.Text = "<-";
-            this.btnBackToLogin.UseVisualStyleBackColor = true;
+            this.lblTeachers.AutoSize = true;
+            this.lblTeachers.Location = new System.Drawing.Point(50, 208);
+            this.lblTeachers.Name = "lblTeachers";
+            this.lblTeachers.Size = new System.Drawing.Size(85, 21);
+            this.lblTeachers.TabIndex = 3;
+            this.lblTeachers.Text = "Müəllimlər";
+            this.lblTeachers.Click += new System.EventHandler(this.lblTeachers_Click);
+            // 
+            // lblStudents
+            // 
+            this.lblStudents.AutoSize = true;
+            this.lblStudents.Location = new System.Drawing.Point(50, 161);
+            this.lblStudents.Name = "lblStudents";
+            this.lblStudents.Size = new System.Drawing.Size(76, 21);
+            this.lblStudents.TabIndex = 2;
+            this.lblStudents.Text = "Tələbələr";
+            this.lblStudents.Click += new System.EventHandler(this.lblStudents_Click);
             // 
             // lblHomePage
             // 
@@ -79,46 +92,38 @@ namespace QuizSystemApp
             this.lblHomePage.Text = "Əsas səhifə";
             this.lblHomePage.Click += new System.EventHandler(this.lblHomePage_Click);
             // 
-            // lblStudents
+            // btnBackToLogin
             // 
-            this.lblStudents.AutoSize = true;
-            this.lblStudents.Location = new System.Drawing.Point(50, 161);
-            this.lblStudents.Name = "lblStudents";
-            this.lblStudents.Size = new System.Drawing.Size(76, 21);
-            this.lblStudents.TabIndex = 2;
-            this.lblStudents.Text = "Tələbələr";
+            this.btnBackToLogin.Location = new System.Drawing.Point(12, 12);
+            this.btnBackToLogin.Name = "btnBackToLogin";
+            this.btnBackToLogin.Size = new System.Drawing.Size(48, 45);
+            this.btnBackToLogin.TabIndex = 0;
+            this.btnBackToLogin.Text = "<-";
+            this.btnBackToLogin.UseVisualStyleBackColor = true;
+            this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
-            // lblTeachers
+            // pnlActions
             // 
-            this.lblTeachers.AutoSize = true;
-            this.lblTeachers.Location = new System.Drawing.Point(50, 208);
-            this.lblTeachers.Name = "lblTeachers";
-            this.lblTeachers.Size = new System.Drawing.Size(85, 21);
-            this.lblTeachers.TabIndex = 3;
-            this.lblTeachers.Text = "Müəllimlər";
-            // 
-            // lblTests
-            // 
-            this.lblTests.AutoSize = true;
-            this.lblTests.Location = new System.Drawing.Point(59, 246);
-            this.lblTests.Name = "lblTests";
-            this.lblTests.Size = new System.Drawing.Size(58, 21);
-            this.lblTests.TabIndex = 4;
-            this.lblTests.Text = "Testlər";
+            this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlActions.Location = new System.Drawing.Point(200, 0);
+            this.pnlActions.Name = "pnlActions";
+            this.pnlActions.Size = new System.Drawing.Size(617, 518);
+            this.pnlActions.TabIndex = 0;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(628, 495);
+            this.ClientSize = new System.Drawing.Size(817, 518);
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AdminPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminPage";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminPage_FormClosed);
             this.Load += new System.EventHandler(this.AdminPage_Load);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();

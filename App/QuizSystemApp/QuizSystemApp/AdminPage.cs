@@ -35,5 +35,59 @@ namespace QuizSystemApp
         {
             lblHomePage_Click(sender, e);
         }
+
+        private void lblStudents_Click(object sender, EventArgs e)
+        {
+            this.pnlActions.Controls.Clear();
+            AdminStudentsPage studentPage = new AdminStudentsPage()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            this.pnlActions.Controls.Add(studentPage);
+            studentPage.Show();
+        }
+
+        private void lblTeachers_Click(object sender, EventArgs e)
+        {
+            this.pnlActions.Controls.Clear();
+            AdminTeachersPage teacherPage = new AdminTeachersPage()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            this.pnlActions.Controls.Add(teacherPage);
+            teacherPage.Show();
+        }
+
+        private void btnBackToLogin_Click(object sender, EventArgs e)
+        {
+            Intro intro = new Intro();
+            this.Hide();
+            intro.Show();
+        }
+
+        private void AdminPage_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void lblTests_Click(object sender, EventArgs e)
+        {
+            this.pnlActions.Controls.Clear();
+            AdminExamsPage examsPage = new AdminExamsPage()
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            this.pnlActions.Controls.Add(examsPage);
+            examsPage.Show();
+        }
     }
 }

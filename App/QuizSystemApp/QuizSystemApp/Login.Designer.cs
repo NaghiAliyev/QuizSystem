@@ -36,13 +36,13 @@ namespace QuizSystemApp
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.tbName = new System.Windows.Forms.TextBox();
-            this.lblName = new System.Windows.Forms.Label();
-            this.tbSurname = new System.Windows.Forms.TextBox();
-            this.lblSurname = new System.Windows.Forms.Label();
+            this.pnlButtons = new System.Windows.Forms.Panel();
             this.lblRegister = new System.Windows.Forms.Label();
             this.btnSignin = new System.Windows.Forms.Button();
-            this.pnlButtons = new System.Windows.Forms.Panel();
+            this.lblSurname = new System.Windows.Forms.Label();
+            this.lblName = new System.Windows.Forms.Label();
+            this.tbSurname = new System.Windows.Forms.TextBox();
+            this.tbName = new System.Windows.Forms.TextBox();
             this.pnlContent.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
@@ -115,41 +115,15 @@ namespace QuizSystemApp
             this.pnlContent.Size = new System.Drawing.Size(405, 359);
             this.pnlContent.TabIndex = 3;
             // 
-            // tbName
+            // pnlButtons
             // 
-            this.tbName.Location = new System.Drawing.Point(148, 51);
-            this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(193, 27);
-            this.tbName.TabIndex = 4;
-            this.tbName.Visible = false;
-            // 
-            // lblName
-            // 
-            this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(27, 54);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(41, 21);
-            this.lblName.TabIndex = 0;
-            this.lblName.Text = "Adı:";
-            this.lblName.Visible = false;
-            // 
-            // tbSurname
-            // 
-            this.tbSurname.Location = new System.Drawing.Point(148, 92);
-            this.tbSurname.Name = "tbSurname";
-            this.tbSurname.Size = new System.Drawing.Size(193, 27);
-            this.tbSurname.TabIndex = 5;
-            this.tbSurname.Visible = false;
-            // 
-            // lblSurname
-            // 
-            this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(27, 95);
-            this.lblSurname.Name = "lblSurname";
-            this.lblSurname.Size = new System.Drawing.Size(65, 21);
-            this.lblSurname.TabIndex = 1;
-            this.lblSurname.Text = "Soyadı:";
-            this.lblSurname.Visible = false;
+            this.pnlButtons.Controls.Add(this.lblRegister);
+            this.pnlButtons.Controls.Add(this.btnLogin);
+            this.pnlButtons.Controls.Add(this.btnSignin);
+            this.pnlButtons.Location = new System.Drawing.Point(19, 227);
+            this.pnlButtons.Name = "pnlButtons";
+            this.pnlButtons.Size = new System.Drawing.Size(322, 97);
+            this.pnlButtons.TabIndex = 4;
             // 
             // lblRegister
             // 
@@ -170,15 +144,41 @@ namespace QuizSystemApp
             this.btnSignin.Text = "Qeydiyyat";
             this.btnSignin.UseVisualStyleBackColor = true;
             // 
-            // pnlButtons
+            // lblSurname
             // 
-            this.pnlButtons.Controls.Add(this.lblRegister);
-            this.pnlButtons.Controls.Add(this.btnLogin);
-            this.pnlButtons.Controls.Add(this.btnSignin);
-            this.pnlButtons.Location = new System.Drawing.Point(19, 227);
-            this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(322, 97);
-            this.pnlButtons.TabIndex = 4;
+            this.lblSurname.AutoSize = true;
+            this.lblSurname.Location = new System.Drawing.Point(27, 95);
+            this.lblSurname.Name = "lblSurname";
+            this.lblSurname.Size = new System.Drawing.Size(65, 21);
+            this.lblSurname.TabIndex = 1;
+            this.lblSurname.Text = "Soyadı:";
+            this.lblSurname.Visible = false;
+            // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(27, 54);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(41, 21);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Adı:";
+            this.lblName.Visible = false;
+            // 
+            // tbSurname
+            // 
+            this.tbSurname.Location = new System.Drawing.Point(148, 92);
+            this.tbSurname.Name = "tbSurname";
+            this.tbSurname.Size = new System.Drawing.Size(193, 27);
+            this.tbSurname.TabIndex = 5;
+            this.tbSurname.Visible = false;
+            // 
+            // tbName
+            // 
+            this.tbName.Location = new System.Drawing.Point(148, 51);
+            this.tbName.Name = "tbName";
+            this.tbName.Size = new System.Drawing.Size(193, 27);
+            this.tbName.TabIndex = 4;
+            this.tbName.Visible = false;
             // 
             // Login
             // 
@@ -188,10 +188,11 @@ namespace QuizSystemApp
             this.Controls.Add(this.pnlContent);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Login_FormClosed_1);
             this.Load += new System.EventHandler(this.Login_Load);
             this.pnlContent.ResumeLayout(false);
             this.pnlContent.PerformLayout();

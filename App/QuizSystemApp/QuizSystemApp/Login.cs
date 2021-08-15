@@ -34,11 +34,15 @@ namespace QuizSystemApp
         private void SetToAdmin()
         {
             lblRegister.Visible = false;
+            if (IsAdmin())
+            {
+
+            }
         }
 
         private void SetToTeacher()
         {
-            lblRegister.Visible = false;
+            //lblRegister.Visible = false;
         }
 
         private void SetToStudent()
@@ -46,9 +50,47 @@ namespace QuizSystemApp
             lblRegister.Visible = false;
         }
 
+        private bool IsAdmin()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        private bool IsTeacher()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        private bool IsStudent()
+        {
+            try
+            {
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+        
         private void Login_Load(object sender, EventArgs e)
         {
-            //query = $"select * from {status}";
             Center(pnlContent,this);
             lblTitle.Text = $"{status} {lblTitle.Text}";
             switch (status)
@@ -56,13 +98,14 @@ namespace QuizSystemApp
                 case "Admin":
                     SetToAdmin();
                     break;
-                case "Teacjer":
-                    SetToAdmin();
+                case "Teacher":
+                    SetToTeacher();
                     break;
                 case "Student":
-                    SetToAdmin();
+                    SetToStudent();
                     break;
                 default:
+                    MessageBox.Show("Test");
                     break;
             }
             pnlStartLocation = pnlButtons.Location;
@@ -109,6 +152,16 @@ namespace QuizSystemApp
             AdminPage adminPage = new AdminPage();
             this.Hide();
             adminPage.Show();
+        }
+
+        private void Login_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Login_FormClosed_1(object sender, FormClosedEventArgs e)
+        {
+
         }
     }
 }

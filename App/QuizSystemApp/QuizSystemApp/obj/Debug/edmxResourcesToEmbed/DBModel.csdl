@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QuizSystemDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="title" Type="String" MaxLength="155" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Questions" Relationship="Self.Question_fk0" FromRole="Exam" ToRole="Question" />
+    <NavigationProperty Name="TakeExams" Relationship="Self.TakeExam_fk1" FromRole="Exam" ToRole="TakeExam" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Text" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="correctVariant" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ExamID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exam" Relationship="Self.Question_fk0" FromRole="Question" ToRole="Exam" />
+    <NavigationProperty Name="Variants" Relationship="Self.Variant_fk0" FromRole="Question" ToRole="Variant" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TakeExams" Relationship="Self.TakeExam_fk0" FromRole="Student" ToRole="TakeExam" />
+  </EntityType>
+  <EntityType Name="TakeExam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="student_id" Type="Int32" Nullable="false" />
+    <Property Name="exam_id" Type="Int32" Nullable="false" />
+    <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amountCorrectAnswer" Type="Int32" Nullable="false" />
+    <Property Name="amountWrongAnswer" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Exam" Relationship="Self.TakeExam_fk1" FromRole="TakeExam" ToRole="Exam" />
+    <NavigationProperty Name="Student" Relationship="Self.TakeExam_fk0" FromRole="TakeExam" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="surname" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Variant">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="variantType" Type="String" MaxLength="1" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="variantText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="questionId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Question" Relationship="Self.Variant_fk0" FromRole="Variant" ToRole="Question" />
+  </EntityType>
+  <Association Name="Question_fk0">
+    <End Role="Exam" Type="Self.Exam" Multiplicity="1" />
+    <End Role="Question" Type="Self.Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Question">
+        <PropertyRef Name="ExamID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TakeExam_fk1">
+    <End Role="Exam" Type="Self.Exam" Multiplicity="1" />
+    <End Role="TakeExam" Type="Self.TakeExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exam">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TakeExam">
+        <PropertyRef Name="exam_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Variant_fk0">
+    <End Role="Question" Type="Self.Question" Multiplicity="1" />
+    <End Role="Variant" Type="Self.Variant" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Variant">
+        <PropertyRef Name="questionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TakeExam_fk0">
+    <End Role="Student" Type="Self.Student" Multiplicity="1" />
+    <End Role="TakeExam" Type="Self.TakeExam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="TakeExam">
+        <PropertyRef Name="student_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Exams" EntityType="Self.Exam" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <EntitySet Name="TakeExams" EntityType="Self.TakeExam" />
+    <EntitySet Name="Teachers" EntityType="Self.Teacher" />
+    <EntitySet Name="Variants" EntityType="Self.Variant" />
+    <AssociationSet Name="Question_fk0" Association="Self.Question_fk0">
+      <End Role="Exam" EntitySet="Exams" />
+      <End Role="Question" EntitySet="Questions" />
+    </AssociationSet>
+    <AssociationSet Name="TakeExam_fk1" Association="Self.TakeExam_fk1">
+      <End Role="Exam" EntitySet="Exams" />
+      <End Role="TakeExam" EntitySet="TakeExams" />
+    </AssociationSet>
+    <AssociationSet Name="Variant_fk0" Association="Self.Variant_fk0">
+      <End Role="Question" EntitySet="Questions" />
+      <End Role="Variant" EntitySet="Variants" />
+    </AssociationSet>
+    <AssociationSet Name="TakeExam_fk0" Association="Self.TakeExam_fk0">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="TakeExam" EntitySet="TakeExams" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -30,9 +30,9 @@ namespace QuizSystemApp
         private void InitializeComponent()
         {
             this.lblName = new System.Windows.Forms.Label();
-            this.btnAdd = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.dgvStudents = new System.Windows.Forms.DataGridView();
+            this.dgrvStudents = new System.Windows.Forms.DataGridView();
             this.lblSurname = new System.Windows.Forms.Label();
             this.tbSurname = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -41,46 +41,46 @@ namespace QuizSystemApp
             this.btnClear = new System.Windows.Forms.Button();
             this.lblPassword = new System.Windows.Forms.Label();
             this.tbPassword = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvStudents)).BeginInit();
             this.SuspendLayout();
             // 
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(144, 37);
+            this.lblName.Location = new System.Drawing.Point(168, 37);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 21);
             this.lblName.TabIndex = 0;
             this.lblName.Text = "Adı:";
             // 
-            // btnAdd
+            // btnSave
             // 
-            this.btnAdd.Location = new System.Drawing.Point(158, 220);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(94, 39);
-            this.btnAdd.TabIndex = 1;
-            this.btnAdd.Text = "button1";
-            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnSave.Location = new System.Drawing.Point(158, 220);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(94, 39);
+            this.btnSave.TabIndex = 1;
+            this.btnSave.Text = "Əlavə et";
+            this.btnSave.UseVisualStyleBackColor = true;
             // 
             // tbName
             // 
-            this.tbName.Location = new System.Drawing.Point(191, 34);
+            this.tbName.Location = new System.Drawing.Point(215, 34);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(212, 27);
             this.tbName.TabIndex = 2;
             // 
-            // dgvStudents
+            // dgrvStudents
             // 
-            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStudents.Location = new System.Drawing.Point(32, 277);
-            this.dgvStudents.Name = "dgvStudents";
-            this.dgvStudents.Size = new System.Drawing.Size(558, 161);
-            this.dgvStudents.TabIndex = 3;
+            this.dgrvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrvStudents.Location = new System.Drawing.Point(32, 277);
+            this.dgrvStudents.Name = "dgrvStudents";
+            this.dgrvStudents.Size = new System.Drawing.Size(558, 161);
+            this.dgrvStudents.TabIndex = 3;
             // 
             // lblSurname
             // 
             this.lblSurname.AutoSize = true;
-            this.lblSurname.Location = new System.Drawing.Point(120, 81);
+            this.lblSurname.Location = new System.Drawing.Point(144, 81);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(65, 21);
             this.lblSurname.TabIndex = 0;
@@ -88,7 +88,7 @@ namespace QuizSystemApp
             // 
             // tbSurname
             // 
-            this.tbSurname.Location = new System.Drawing.Point(191, 78);
+            this.tbSurname.Location = new System.Drawing.Point(215, 78);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(212, 27);
             this.tbSurname.TabIndex = 2;
@@ -96,7 +96,7 @@ namespace QuizSystemApp
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(111, 126);
+            this.lblEmail.Location = new System.Drawing.Point(135, 126);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(74, 21);
             this.lblEmail.TabIndex = 0;
@@ -104,7 +104,7 @@ namespace QuizSystemApp
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(191, 123);
+            this.tbEmail.Location = new System.Drawing.Point(215, 123);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(212, 27);
             this.tbEmail.TabIndex = 2;
@@ -115,7 +115,7 @@ namespace QuizSystemApp
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 39);
             this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "button1";
+            this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
             // btnClear
@@ -124,13 +124,13 @@ namespace QuizSystemApp
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(94, 39);
             this.btnClear.TabIndex = 1;
-            this.btnClear.Text = "button1";
+            this.btnClear.Text = "Təmizlə";
             this.btnClear.UseVisualStyleBackColor = true;
             // 
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(111, 173);
+            this.lblPassword.Location = new System.Drawing.Point(135, 173);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 21);
             this.lblPassword.TabIndex = 0;
@@ -138,7 +138,7 @@ namespace QuizSystemApp
             // 
             // tbPassword
             // 
-            this.tbPassword.Location = new System.Drawing.Point(191, 170);
+            this.tbPassword.Location = new System.Drawing.Point(215, 170);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(212, 27);
             this.tbPassword.TabIndex = 2;
@@ -148,7 +148,7 @@ namespace QuizSystemApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 472);
-            this.Controls.Add(this.dgvStudents);
+            this.Controls.Add(this.dgrvStudents);
             this.Controls.Add(this.tbPassword);
             this.Controls.Add(this.tbEmail);
             this.Controls.Add(this.lblPassword);
@@ -158,7 +158,7 @@ namespace QuizSystemApp
             this.Controls.Add(this.lblSurname);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.btnAdd);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lblName);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -166,7 +166,7 @@ namespace QuizSystemApp
             this.Name = "AdminStudentsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminStudentsPage";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrvStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -175,9 +175,9 @@ namespace QuizSystemApp
         #endregion
 
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox tbName;
-        private System.Windows.Forms.DataGridView dgvStudents;
+        private System.Windows.Forms.DataGridView dgrvStudents;
         private System.Windows.Forms.Label lblSurname;
         private System.Windows.Forms.TextBox tbSurname;
         private System.Windows.Forms.Label lblEmail;

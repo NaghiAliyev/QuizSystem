@@ -55,5 +55,10 @@ namespace QuizSystemApp
             this.Hide();
             login.Show();
         }
+
+        private void Intro_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
