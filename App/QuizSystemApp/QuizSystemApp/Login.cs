@@ -158,10 +158,5 @@ namespace QuizSystemApp
         {
             Application.Exit();
         }
-
-        private void Login_FormClosed_1(object sender, FormClosedEventArgs e)
-        {
-
-        }
     }
 }

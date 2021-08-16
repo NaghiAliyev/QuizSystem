@@ -12,6 +12,8 @@ namespace QuizSystemApp
 {
     public partial class AdminHomePage : Form
     {
+
+        Admin admin = new Admin();
         public AdminHomePage()
         {
             InitializeComponent();
@@ -28,6 +30,12 @@ namespace QuizSystemApp
         private void AdminHomePage_Load(object sender, EventArgs e)
         {
             Center(pnlContent,this);
+            using (DBEntities db = new DBEntities())
+            {
+                admin = db.Admins.Where(x => x.email == "admin@admin.com").FirstOrDefault();
+                tbEmail.Text = admin.email;
+                tbPassword.Text = admin.password;
+            }
         }
 
         private void AdminHomePage_Resize(object sender, EventArgs e)

@@ -136,3 +136,5 @@ ON UPDATE CASCADE
 GO
 ALTER TABLE [TakeExam] CHECK CONSTRAINT [TakeExam_fk1]
 GO
+
+INSERT INTO Admin(email, password) values('admin@admin.com', '123456')

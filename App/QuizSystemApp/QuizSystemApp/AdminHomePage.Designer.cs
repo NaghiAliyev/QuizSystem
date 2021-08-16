@@ -31,8 +31,8 @@ namespace QuizSystemApp
         {
             this.lblEmail = new System.Windows.Forms.Label();
             this.lblPassword = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbEmail = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -57,20 +57,20 @@ namespace QuizSystemApp
             this.lblPassword.TabIndex = 0;
             this.lblPassword.Text = "Şifrə:";
             // 
-            // textBox1
+            // tbEmail
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(105, 91);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(196, 27);
-            this.textBox1.TabIndex = 1;
+            this.tbEmail.Enabled = false;
+            this.tbEmail.Location = new System.Drawing.Point(105, 91);
+            this.tbEmail.Name = "tbEmail";
+            this.tbEmail.Size = new System.Drawing.Size(196, 27);
+            this.tbEmail.TabIndex = 1;
             // 
-            // textBox2
+            // tbPassword
             // 
-            this.textBox2.Location = new System.Drawing.Point(105, 129);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(196, 27);
-            this.textBox2.TabIndex = 1;
+            this.tbPassword.Location = new System.Drawing.Point(105, 129);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(196, 27);
+            this.tbPassword.TabIndex = 1;
             // 
             // lblTitle
             // 
@@ -86,9 +86,9 @@ namespace QuizSystemApp
             this.pnlContent.Controls.Add(this.btnUpdate);
             this.pnlContent.Controls.Add(this.lblTitle);
             this.pnlContent.Controls.Add(this.lblEmail);
-            this.pnlContent.Controls.Add(this.textBox2);
+            this.pnlContent.Controls.Add(this.tbPassword);
             this.pnlContent.Controls.Add(this.lblPassword);
-            this.pnlContent.Controls.Add(this.textBox1);
+            this.pnlContent.Controls.Add(this.tbEmail);
             this.pnlContent.Location = new System.Drawing.Point(53, 78);
             this.pnlContent.Name = "pnlContent";
             this.pnlContent.Size = new System.Drawing.Size(336, 235);
@@ -111,7 +111,7 @@ namespace QuizSystemApp
             this.Controls.Add(this.pnlContent);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AdminHomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminHomePage";
@@ -127,8 +127,8 @@ namespace QuizSystemApp
 
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.Label lblPassword;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbEmail;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Button btnUpdate;
