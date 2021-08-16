@@ -12,26 +12,35 @@ namespace QuizSystemApp
 {
     public partial class AdminTeachersPage : Form
     {
-        Teacher teacher = new Teacher();
         public AdminTeachersPage()
         {
             InitializeComponent();
         }
+        //Global Variables
+        Teacher teacher = new Teacher();
 
-        private void AdminTeachersPage_Load(object sender, EventArgs e)
+        //Methods
+        private void PopulateDGV()
         {
+            dgrvTeachers.AutoGenerateColumns = false;
             using (DBEntities db = new DBEntities())
             {
-                foreach (var teacher in db.Teachers)
-                {
-                    DataGridViewRow row = (DataGridViewRow)dgrvTeachers.Rows[0].Clone();
-                    row.Cells[0].Value = teacher.name;
-                    row.Cells[1].Value = teacher.surname;
-                    row.Cells[2].Value = teacher.email;
-                    row.Cells[3].Value = teacher.password;
-                    dgrvTeachers.Rows.Add(row);
-                }
+                dgrvTeachers.DataSource = db.Teachers.ToList<Teacher>();
             }
+        }
+
+        private void FillInputs()
+        {
+            tbName.Text = teacher.name;
+            tbSurname.Text = teacher.surname;
+            tbEmail.Text = teacher.email;
+            tbPassword.Text = teacher.password;
+        }
+
+        //Form events
+        private void AdminTeachersPage_Load(object sender, EventArgs e)
+        {
+            PopulateDGV();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -45,32 +54,32 @@ namespace QuizSystemApp
                 db.Teachers.Add(teacher);
                 db.SaveChanges();
 
-                DataGridViewRow row = (DataGridViewRow)dgrvTeachers.Rows[0].Clone();
-                row.Cells[0].Value = teacher.name;
-                row.Cells[1].Value = teacher.surname;
-                row.Cells[2].Value = teacher.email;
-                row.Cells[3].Value = teacher.password;
-                dgrvTeachers.Rows.Add(row);
+                PopulateDGV();
 
-                tbName.Text = "";
-                tbSurname.Text = "";
-                tbEmail.Text = "";
-                tbPassword.Text = "";
+                btnClear_Click(sender,e);
 
                 MessageBox.Show("Qeydiyyat uğurla həyata keçirildi!");
             }
+            btnSave.Text = "Dəyiş";
+            btnDelete.Enabled = true;
         }
 
         private void dgrvTeachers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             using (DBEntities db = new DBEntities())
             {
-                teacher = db.Teachers.Where(x => x.email == dgrvTeachers.SelectedRows[0].Cells[2].Value.ToString()).FirstOrDefault();
-                tbName.Text = teacher.name;
-                tbSurname.Text = teacher.surname;
-                tbEmail.Text = teacher.email;
-                tbPassword.Text = teacher.password;
+                teacher.id = Convert.ToInt32(dgrvTeachers.CurrentRow.Cells["ID"].Value);
+                teacher = db.Teachers.Where(x => x.id == teacher.id).FirstOrDefault();
+                FillInputs();
             }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tbName.Text = "";
+            tbSurname.Text = "";
+            tbEmail.Text = "";
+            tbPassword.Text = "";
         }
     }
 }

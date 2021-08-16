@@ -41,6 +41,7 @@ namespace QuizSystemApp
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Soyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ElektronPoçt = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +53,7 @@ namespace QuizSystemApp
             // 
             this.dgrvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgrvTeachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.Ad,
             this.Soyad,
             this.ElektronPoçt,
@@ -125,6 +127,7 @@ namespace QuizSystemApp
             this.btnClear.TabIndex = 8;
             this.btnClear.Text = "Təmizlə";
             this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDelete
             // 
@@ -154,23 +157,34 @@ namespace QuizSystemApp
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Adı:";
             // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
             // Ad
             // 
+            this.Ad.DataPropertyName = "name";
             this.Ad.HeaderText = "Ad";
             this.Ad.Name = "Ad";
             // 
             // Soyad
             // 
+            this.Soyad.DataPropertyName = "surname";
             this.Soyad.HeaderText = "Soyad";
             this.Soyad.Name = "Soyad";
             // 
             // ElektronPoçt
             // 
+            this.ElektronPoçt.DataPropertyName = "email";
             this.ElektronPoçt.HeaderText = "Elektron Poçt";
             this.ElektronPoçt.Name = "ElektronPoçt";
             // 
             // Şifrə
             // 
+            this.Şifrə.DataPropertyName = "password";
             this.Şifrə.HeaderText = "Şifrə";
             this.Şifrə.Name = "Şifrə";
             // 
@@ -218,6 +232,7 @@ namespace QuizSystemApp
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Soyad;
         private System.Windows.Forms.DataGridViewTextBoxColumn ElektronPoçt;
