@@ -12,6 +12,10 @@ namespace QuizSystemApp
 {
     public partial class Login : Form
     {
+        Admin admin = new Admin();
+        Teacher teacher = new Teacher();
+        Student student = new Student();
+
         public Login(string _status)
         {
             InitializeComponent();
@@ -149,9 +153,110 @@ namespace QuizSystemApp
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            AdminPage adminPage = new AdminPage();
-            this.Hide();
-            adminPage.Show();
+            if (lblRegister.Text == "Qeydiyyat")
+            {
+                switch (status)
+                {
+                    case "Admin":
+                        using (DBEntities db = new DBEntities())
+                        {
+                            admin = db.Admins.Where(x => x.email == "admin@admin.com").FirstOrDefault();
+                            if (tbEmail.Text == admin.email)
+                            {
+                                if (tbPassword.Text == admin.password)
+                                {
+                                    AdminPage adminPage = new AdminPage();
+                                    this.Hide();
+                                    adminPage.Show();
+                                }
+                                else
+                                {
+                                    tbPassword.Text = "";
+                                    MessageBox.Show("Şifrəni yalnış daxil etmisiniz!");
+
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Elektron poçt ünvanını yalnış daxil etmisiniz!");
+                            }
+                        }
+                        break;
+                    case "Teacher":
+                        using (DBEntities db = new DBEntities())
+                        {
+                            teacher = db.Teachers.Where(x => x.email == tbEmail.Text).FirstOrDefault();
+                            if (teacher != null)
+                            {
+                                if (tbPassword.Text == teacher.password)
+                                {
+                                    //AdminPage adminPage = new AdminPage();
+                                    //this.Hide();
+                                    //adminPage.Show();
+                                    MessageBox.Show("Isleyir");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Şifrəni yalnış daxil etmisiniz!");
+                                    tbPassword.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Elektron poçt ünvanını yalnış daxil etmisiniz!");
+                            }
+                        }
+                        break;
+                    case "Student":
+                        using (DBEntities db = new DBEntities())
+                        {
+                            student = db.Students.Where(x => x.email == tbEmail.Text).FirstOrDefault();
+                            if (student != null)
+                            {
+                                if (tbPassword.Text == student.password)
+                                {
+                                    //AdminPage adminPage = new AdminPage();
+                                    //this.Hide();
+                                    //adminPage.Show();
+                                    MessageBox.Show("Isleyir");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Şifrəni yalnış daxil etmisiniz!");
+                                    tbPassword.Text = "";
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Elektron poçt ünvanını yalnış daxil etmisiniz!");
+                            }
+                        }
+                        break;
+                }
+            }
+            else if(lblRegister.Text == "Daxil ol")
+            {
+                switch (status)
+                {
+                    case "Teacher":
+                        using (DBEntities db = new DBEntities())
+                        {
+                            teacher.name = tbName.Text;
+                            teacher.surname = tbSurname.Text;
+                            teacher.email = tbEmail.Text;
+                            db.Teachers.Add(teacher);
+                            db.SaveChanges();
+                            MessageBox.Show("Qeydiyyat uğurla həyata keçirildi!");
+                        }
+                        break;
+                    case "Student":
+                        break;
+                }
+            }
+            else
+            {
+                MessageBox.Show("keçirildi!");
+            }
         }
 
         private void Login_FormClosed(object sender, FormClosedEventArgs e)

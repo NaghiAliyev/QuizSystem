@@ -85,6 +85,7 @@ namespace QuizSystemApp
             // 
             this.tbPassword.Location = new System.Drawing.Point(148, 176);
             this.tbPassword.Name = "tbPassword";
+            this.tbPassword.PasswordChar = '*';
             this.tbPassword.Size = new System.Drawing.Size(193, 27);
             this.tbPassword.TabIndex = 7;
             // 

@@ -41,16 +41,26 @@ namespace QuizSystemApp
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
+            this.Ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Soyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElektronPoçt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Şifrə = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvTeachers)).BeginInit();
             this.SuspendLayout();
             // 
             // dgrvTeachers
             // 
             this.dgrvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrvTeachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ad,
+            this.Soyad,
+            this.ElektronPoçt,
+            this.Şifrə});
             this.dgrvTeachers.Location = new System.Drawing.Point(31, 269);
             this.dgrvTeachers.Name = "dgrvTeachers";
             this.dgrvTeachers.Size = new System.Drawing.Size(558, 161);
             this.dgrvTeachers.TabIndex = 15;
+            this.dgrvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvTeachers_CellContentClick);
             // 
             // tbPassword
             // 
@@ -133,6 +143,7 @@ namespace QuizSystemApp
             this.btnSave.TabIndex = 10;
             this.btnSave.Text = "Əlavə et";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblName
             // 
@@ -142,6 +153,26 @@ namespace QuizSystemApp
             this.lblName.Size = new System.Drawing.Size(41, 21);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Adı:";
+            // 
+            // Ad
+            // 
+            this.Ad.HeaderText = "Ad";
+            this.Ad.Name = "Ad";
+            // 
+            // Soyad
+            // 
+            this.Soyad.HeaderText = "Soyad";
+            this.Soyad.Name = "Soyad";
+            // 
+            // ElektronPoçt
+            // 
+            this.ElektronPoçt.HeaderText = "Elektron Poçt";
+            this.ElektronPoçt.Name = "ElektronPoçt";
+            // 
+            // Şifrə
+            // 
+            this.Şifrə.HeaderText = "Şifrə";
+            this.Şifrə.Name = "Şifrə";
             // 
             // AdminTeachersPage
             // 
@@ -162,10 +193,11 @@ namespace QuizSystemApp
             this.Controls.Add(this.lblName);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AdminTeachersPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminTeachersPage";
+            this.Load += new System.EventHandler(this.AdminTeachersPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvTeachers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -186,5 +218,9 @@ namespace QuizSystemApp
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Soyad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ElektronPoçt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Şifrə;
     }
 }
