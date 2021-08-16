@@ -33,17 +33,17 @@ namespace QuizSystemApp
             this.tbExamTitle = new System.Windows.Forms.TextBox();
             this.pnlTop = new System.Windows.Forms.Panel();
             this.pnlContent = new System.Windows.Forms.Panel();
-            this.pnlQuestion = new System.Windows.Forms.Panel();
-            this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblQuestionTitle = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnAddVariant = new System.Windows.Forms.Button();
-            this.pnlVariantTemplate = new System.Windows.Forms.Panel();
-            this.lblVariant = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.rb = new System.Windows.Forms.RadioButton();
             this.btnConfirmExam = new System.Windows.Forms.Button();
+            this.pnlQuestion = new System.Windows.Forms.Panel();
+            this.pnlVariantTemplate = new System.Windows.Forms.Panel();
+            this.rb = new System.Windows.Forms.RadioButton();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.lblVariant = new System.Windows.Forms.Label();
+            this.btnAddVariant = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblQuestionTitle = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlQuestion.SuspendLayout();
@@ -87,6 +87,16 @@ namespace QuizSystemApp
             this.pnlContent.Size = new System.Drawing.Size(765, 495);
             this.pnlContent.TabIndex = 2;
             // 
+            // btnConfirmExam
+            // 
+            this.btnConfirmExam.Location = new System.Drawing.Point(595, 443);
+            this.btnConfirmExam.Name = "btnConfirmExam";
+            this.btnConfirmExam.Size = new System.Drawing.Size(112, 40);
+            this.btnConfirmExam.TabIndex = 2;
+            this.btnConfirmExam.Text = "Bitir";
+            this.btnConfirmExam.UseVisualStyleBackColor = true;
+            this.btnConfirmExam.Click += new System.EventHandler(this.btnConfirmExam_Click);
+            // 
             // pnlQuestion
             // 
             this.pnlQuestion.Controls.Add(this.pnlVariantTemplate);
@@ -100,51 +110,6 @@ namespace QuizSystemApp
             this.pnlQuestion.Size = new System.Drawing.Size(712, 415);
             this.pnlQuestion.TabIndex = 0;
             // 
-            // btnPrevious
-            // 
-            this.btnPrevious.Location = new System.Drawing.Point(3, 3);
-            this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(36, 34);
-            this.btnPrevious.TabIndex = 0;
-            this.btnPrevious.Text = "<-";
-            this.btnPrevious.UseVisualStyleBackColor = true;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(673, 3);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(36, 34);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = "->";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // lblQuestionTitle
-            // 
-            this.lblQuestionTitle.AutoSize = true;
-            this.lblQuestionTitle.Location = new System.Drawing.Point(41, 38);
-            this.lblQuestionTitle.Name = "lblQuestionTitle";
-            this.lblQuestionTitle.Size = new System.Drawing.Size(57, 21);
-            this.lblQuestionTitle.TabIndex = 1;
-            this.lblQuestionTitle.Text = "Başlıq:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(104, 26);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(471, 85);
-            this.textBox2.TabIndex = 2;
-            // 
-            // btnAddVariant
-            // 
-            this.btnAddVariant.Location = new System.Drawing.Point(635, 117);
-            this.btnAddVariant.Name = "btnAddVariant";
-            this.btnAddVariant.Size = new System.Drawing.Size(44, 36);
-            this.btnAddVariant.TabIndex = 1;
-            this.btnAddVariant.Text = "+";
-            this.btnAddVariant.UseVisualStyleBackColor = true;
-            this.btnAddVariant.Click += new System.EventHandler(this.btnAddVariant_Click);
-            // 
             // pnlVariantTemplate
             // 
             this.pnlVariantTemplate.Controls.Add(this.rb);
@@ -155,22 +120,6 @@ namespace QuizSystemApp
             this.pnlVariantTemplate.Size = new System.Drawing.Size(637, 45);
             this.pnlVariantTemplate.TabIndex = 3;
             this.pnlVariantTemplate.Visible = false;
-            // 
-            // lblVariant
-            // 
-            this.lblVariant.AutoSize = true;
-            this.lblVariant.Location = new System.Drawing.Point(3, 14);
-            this.lblVariant.Name = "lblVariant";
-            this.lblVariant.Size = new System.Drawing.Size(28, 21);
-            this.lblVariant.TabIndex = 0;
-            this.lblVariant.Text = "A)";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(35, 10);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(424, 27);
-            this.textBox3.TabIndex = 1;
             // 
             // rb
             // 
@@ -183,14 +132,66 @@ namespace QuizSystemApp
             this.rb.Text = "Düzgün variant";
             this.rb.UseVisualStyleBackColor = true;
             // 
-            // btnConfirmExam
+            // textBox3
             // 
-            this.btnConfirmExam.Location = new System.Drawing.Point(595, 443);
-            this.btnConfirmExam.Name = "btnConfirmExam";
-            this.btnConfirmExam.Size = new System.Drawing.Size(112, 40);
-            this.btnConfirmExam.TabIndex = 2;
-            this.btnConfirmExam.Text = "Bitir";
-            this.btnConfirmExam.UseVisualStyleBackColor = true;
+            this.textBox3.Location = new System.Drawing.Point(35, 10);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(424, 27);
+            this.textBox3.TabIndex = 1;
+            // 
+            // lblVariant
+            // 
+            this.lblVariant.AutoSize = true;
+            this.lblVariant.Location = new System.Drawing.Point(3, 14);
+            this.lblVariant.Name = "lblVariant";
+            this.lblVariant.Size = new System.Drawing.Size(28, 21);
+            this.lblVariant.TabIndex = 0;
+            this.lblVariant.Text = "A)";
+            // 
+            // btnAddVariant
+            // 
+            this.btnAddVariant.Location = new System.Drawing.Point(635, 117);
+            this.btnAddVariant.Name = "btnAddVariant";
+            this.btnAddVariant.Size = new System.Drawing.Size(44, 36);
+            this.btnAddVariant.TabIndex = 1;
+            this.btnAddVariant.Text = "+";
+            this.btnAddVariant.UseVisualStyleBackColor = true;
+            this.btnAddVariant.Click += new System.EventHandler(this.btnAddVariant_Click);
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(104, 26);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(471, 85);
+            this.textBox2.TabIndex = 2;
+            // 
+            // lblQuestionTitle
+            // 
+            this.lblQuestionTitle.AutoSize = true;
+            this.lblQuestionTitle.Location = new System.Drawing.Point(41, 38);
+            this.lblQuestionTitle.Name = "lblQuestionTitle";
+            this.lblQuestionTitle.Size = new System.Drawing.Size(57, 21);
+            this.lblQuestionTitle.TabIndex = 1;
+            this.lblQuestionTitle.Text = "Başlıq:";
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(673, 3);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(36, 34);
+            this.btnNext.TabIndex = 0;
+            this.btnNext.Text = "->";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(3, 3);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(36, 34);
+            this.btnPrevious.TabIndex = 0;
+            this.btnPrevious.Text = "<-";
+            this.btnPrevious.UseVisualStyleBackColor = true;
             // 
             // Exams
             // 
@@ -201,7 +202,7 @@ namespace QuizSystemApp
             this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Exams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Exams";

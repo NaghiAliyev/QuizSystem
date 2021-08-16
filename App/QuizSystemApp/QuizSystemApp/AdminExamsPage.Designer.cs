@@ -44,7 +44,7 @@ namespace QuizSystemApp
             // 
             // btnGoToExams
             // 
-            this.btnGoToExams.Location = new System.Drawing.Point(498, 136);
+            this.btnGoToExams.Location = new System.Drawing.Point(498, 133);
             this.btnGoToExams.Name = "btnGoToExams";
             this.btnGoToExams.Size = new System.Drawing.Size(91, 46);
             this.btnGoToExams.TabIndex = 17;

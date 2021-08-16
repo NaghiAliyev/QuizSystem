@@ -42,3 +42,5 @@ C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\Quiz
 C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.csproj.CopyComplete
 C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.exe
 C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.pdb
+D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.TeacherHomePage.resources
+D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.TeachersPage.resources

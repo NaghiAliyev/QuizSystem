@@ -11,17 +11,17 @@ using System.Windows.Forms;
 
 namespace QuizSystemApp
 {
-    public partial class AdminHomePage : Form
+    public partial class StudentHomePage : Form
     {
-        public AdminHomePage(Admin _currentAdmin, AdminPage _parent)
+        public StudentHomePage(Student _currentStudent, StudentsPage _parent)
         {
             InitializeComponent();
             parent = _parent;
-            currentAdmin = _currentAdmin;
+            currentStudent = _currentStudent;
         }
         //Global Variables
-        Admin currentAdmin;
-        AdminPage parent;
+        StudentsPage parent;
+        Student currentStudent;
 
         //Methods
         private void Center(Panel inner, Control outer)
@@ -31,17 +31,20 @@ namespace QuizSystemApp
             inner.Top = (outer.Height - inner.Height) / 2;
         }
 
-        private void AdminHomePage_Load(object sender, EventArgs e)
+        //
+        private void StudentHomePage_Load(object sender, EventArgs e)
         {
-            Center(pnlContent,this);
+            Center(pnlContent, this);
             using (DBEntities db = new DBEntities())
             {
-                tbEmail.Text = currentAdmin.email;
-                tbPassword.Text = currentAdmin.password;
+                tbName.Text = currentStudent.name;
+                tbSurname.Text = currentStudent.surname;
+                tbEmail.Text = currentStudent.email;
+                tbPassword.Text = currentStudent.password;
             }
         }
 
-        private void AdminHomePage_Resize(object sender, EventArgs e)
+        private void StudentHomePage_Resize(object sender, EventArgs e)
         {
             Center(pnlContent, this);
         }
@@ -50,15 +53,16 @@ namespace QuizSystemApp
         {
             using (DBEntities db = new DBEntities())
             {
-                currentAdmin.password = tbPassword.Text;
-                db.Entry(currentAdmin).State = EntityState.Modified;
+                currentStudent.password = tbPassword.Text;
+                currentStudent.name = tbName.Text;
+                currentStudent.surname = tbSurname.Text;
+                db.Entry(currentStudent).State = EntityState.Modified;
                 db.SaveChanges();
                 MessageBox.Show("Şifrə uğurla yeniləndi!", "Bildiriş", MessageBoxButtons.OK);
                 parent.Hide();
-                Login login = new Login("Admin");
+                Login login = new Login("Student");
                 login.Show();
             }
         }
     }
-
 }

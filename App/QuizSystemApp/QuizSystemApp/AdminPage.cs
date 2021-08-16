@@ -12,15 +12,18 @@ namespace QuizSystemApp
 {
     public partial class AdminPage : Form
     {
-        public AdminPage()
+        public AdminPage(Admin _currentAdmin)
         {
             InitializeComponent();
+            currentAdmin = _currentAdmin;
         }
+        //Global Variables
+        Admin currentAdmin;
 
         private void lblHomePage_Click(object sender, EventArgs e)
         {
             this.pnlActions.Controls.Clear();
-            AdminHomePage homePage = new AdminHomePage(this)
+            AdminHomePage homePage = new AdminHomePage(currentAdmin, this)
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,

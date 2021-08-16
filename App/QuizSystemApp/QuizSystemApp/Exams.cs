@@ -64,5 +64,10 @@ namespace QuizSystemApp
                 }
             }
         }
+
+        private void btnConfirmExam_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

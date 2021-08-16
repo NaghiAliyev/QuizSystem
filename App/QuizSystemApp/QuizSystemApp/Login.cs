@@ -37,59 +37,20 @@ namespace QuizSystemApp
         private void SetToAdmin()
         {
             lblRegister.Visible = false;
-            if (IsAdmin())
-            {
+            //if ()
+            //{
 
-            }
+            //}
         }
 
         private void SetToTeacher()
         {
-            //lblRegister.Visible = false;
+
         }
 
         private void SetToStudent()
         {
             lblRegister.Visible = false;
-        }
-
-        private bool IsAdmin()
-        {
-            try
-            {
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
-
-        private bool IsTeacher()
-        {
-            try
-            {
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
-        }
-
-        private bool IsStudent()
-        {
-            try
-            {
-                return true;
-            }
-            catch (Exception)
-            {
-
-                return false;
-            }
         }
         
         private void Login_Load(object sender, EventArgs e)
@@ -159,12 +120,13 @@ namespace QuizSystemApp
                     case "Admin":
                         using (DBEntities db = new DBEntities())
                         {
-                            admin = db.Admins.Where(x => x.email == "admin@admin.com").FirstOrDefault();
-                            if (tbEmail.Text == admin.email)
+                            
+                            admin = db.Admins.Where(x => x.email == tbEmail.Text).FirstOrDefault();
+                            if (admin != null)
                             {
                                 if (tbPassword.Text == admin.password)
                                 {
-                                    AdminPage adminPage = new AdminPage();
+                                    AdminPage adminPage = new AdminPage(admin);
                                     this.Hide();
                                     adminPage.Show();
                                 }
@@ -189,10 +151,9 @@ namespace QuizSystemApp
                             {
                                 if (tbPassword.Text == teacher.password)
                                 {
-                                    //AdminPage adminPage = new AdminPage();
-                                    //this.Hide();
-                                    //adminPage.Show();
-                                    MessageBox.Show("Isleyir");
+                                    TeachersPage teachersPage = new TeachersPage(teacher);
+                                    this.Hide();
+                                    teachersPage.Show();
                                 }
                                 else
                                 {
@@ -214,10 +175,7 @@ namespace QuizSystemApp
                             {
                                 if (tbPassword.Text == student.password)
                                 {
-                                    //AdminPage adminPage = new AdminPage();
-                                    //this.Hide();
-                                    //adminPage.Show();
-                                    MessageBox.Show("Isleyir");
+                                    StudentsPage studentsPage = new StudentsPage(student);
                                 }
                                 else
                                 {
