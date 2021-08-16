@@ -22,7 +22,6 @@ namespace QuizSystemApp
             status = _status;
         }
         string status;
-        string query;
         bool flag = true;
         Point pnlStartLocation;
         Point lblStartLocation;

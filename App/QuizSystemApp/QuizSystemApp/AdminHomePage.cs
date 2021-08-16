@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,9 +15,11 @@ namespace QuizSystemApp
     {
 
         Admin admin = new Admin();
-        public AdminHomePage()
+        AdminPage parent;
+        public AdminHomePage(AdminPage _parent)
         {
             InitializeComponent();
+            this.parent = _parent;
         }
 
         //Methods
@@ -49,8 +52,14 @@ namespace QuizSystemApp
             {
                 admin = db.Admins.Where(x => x.email == "admin@admin.com").FirstOrDefault();
                 admin.password = tbPassword.Text;
+                db.Entry(admin).State = EntityState.Modified;
                 db.SaveChanges();
-                MessageBox.Show("Şifrə uğurla yeniləndi!");
+                MessageBox.Show("Şifrə uğurla yeniləndi!", "Bildiriş", MessageBoxButtons.OK);
+
+
+                parent.Hide();
+                Login login = new Login("Admin");
+                login.Show();
             }
         }
     }

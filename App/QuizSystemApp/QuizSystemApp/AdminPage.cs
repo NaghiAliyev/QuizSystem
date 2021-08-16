@@ -20,7 +20,7 @@ namespace QuizSystemApp
         private void lblHomePage_Click(object sender, EventArgs e)
         {
             this.pnlActions.Controls.Clear();
-            AdminHomePage homePage = new AdminHomePage()
+            AdminHomePage homePage = new AdminHomePage(this)
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
