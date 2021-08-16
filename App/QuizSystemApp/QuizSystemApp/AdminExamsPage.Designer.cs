@@ -44,7 +44,7 @@ namespace QuizSystemApp
             // 
             // btnGoToExams
             // 
-            this.btnGoToExams.Location = new System.Drawing.Point(130, 92);
+            this.btnGoToExams.Location = new System.Drawing.Point(498, 136);
             this.btnGoToExams.Name = "btnGoToExams";
             this.btnGoToExams.Size = new System.Drawing.Size(91, 46);
             this.btnGoToExams.TabIndex = 17;
@@ -61,7 +61,7 @@ namespace QuizSystemApp
             this.Controls.Add(this.dgrvTeachers);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "AdminExamsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminExamsPage";

@@ -30,6 +30,11 @@ namespace QuizSystemApp
         private void InitializeComponent()
         {
             this.dgrvTeachers = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Soyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ElektronPoçt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Şifrə = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPassword = new System.Windows.Forms.TextBox();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.lblPassword = new System.Windows.Forms.Label();
@@ -41,11 +46,6 @@ namespace QuizSystemApp
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Soyad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ElektronPoçt = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Şifrə = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvTeachers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,6 +63,37 @@ namespace QuizSystemApp
             this.dgrvTeachers.Size = new System.Drawing.Size(558, 161);
             this.dgrvTeachers.TabIndex = 15;
             this.dgrvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvTeachers_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Ad
+            // 
+            this.Ad.DataPropertyName = "name";
+            this.Ad.HeaderText = "Ad";
+            this.Ad.Name = "Ad";
+            // 
+            // Soyad
+            // 
+            this.Soyad.DataPropertyName = "surname";
+            this.Soyad.HeaderText = "Soyad";
+            this.Soyad.Name = "Soyad";
+            // 
+            // ElektronPoçt
+            // 
+            this.ElektronPoçt.DataPropertyName = "email";
+            this.ElektronPoçt.HeaderText = "Elektron Poçt";
+            this.ElektronPoçt.Name = "ElektronPoçt";
+            // 
+            // Şifrə
+            // 
+            this.Şifrə.DataPropertyName = "password";
+            this.Şifrə.HeaderText = "Şifrə";
+            this.Şifrə.Name = "Şifrə";
             // 
             // tbPassword
             // 
@@ -156,37 +187,6 @@ namespace QuizSystemApp
             this.lblName.Size = new System.Drawing.Size(41, 21);
             this.lblName.TabIndex = 7;
             this.lblName.Text = "Adı:";
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "ID";
-            this.ID.HeaderText = "Id";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Ad
-            // 
-            this.Ad.DataPropertyName = "name";
-            this.Ad.HeaderText = "Ad";
-            this.Ad.Name = "Ad";
-            // 
-            // Soyad
-            // 
-            this.Soyad.DataPropertyName = "surname";
-            this.Soyad.HeaderText = "Soyad";
-            this.Soyad.Name = "Soyad";
-            // 
-            // ElektronPoçt
-            // 
-            this.ElektronPoçt.DataPropertyName = "email";
-            this.ElektronPoçt.HeaderText = "Elektron Poçt";
-            this.ElektronPoçt.Name = "ElektronPoçt";
-            // 
-            // Şifrə
-            // 
-            this.Şifrə.DataPropertyName = "password";
-            this.Şifrə.HeaderText = "Şifrə";
-            this.Şifrə.Name = "Şifrə";
             // 
             // AdminTeachersPage
             // 

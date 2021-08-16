@@ -12,12 +12,14 @@ namespace QuizSystemApp
 {
     public partial class AdminHomePage : Form
     {
-
-        Admin admin = new Admin();
-        public AdminHomePage()
+        public AdminHomePage(AdminPage _parent)
         {
             InitializeComponent();
+            parent = _parent;
         }
+        //Global Variables
+        Admin admin = new Admin();
+        AdminPage parent;
 
         //Methods
         private void Center(Panel inner, Control outer)
@@ -51,6 +53,9 @@ namespace QuizSystemApp
                 admin.password = tbPassword.Text;
                 db.SaveChanges();
                 MessageBox.Show("Şifrə uğurla yeniləndi!");
+                parent.Hide();
+                Login login = new Login("Admin");
+                login.Show();
             }
         }
     }
