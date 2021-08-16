@@ -42,6 +42,17 @@ namespace QuizSystemApp
         {
             Center(pnlContent, this);
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            using (DBEntities db = new DBEntities())
+            {
+                admin = db.Admins.Where(x => x.email == "admin@admin.com").FirstOrDefault();
+                admin.password = tbPassword.Text;
+                db.SaveChanges();
+                MessageBox.Show("Şifrə uğurla yeniləndi!");
+            }
+        }
     }
 
 }

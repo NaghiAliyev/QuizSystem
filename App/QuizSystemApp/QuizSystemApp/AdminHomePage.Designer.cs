@@ -102,6 +102,7 @@ namespace QuizSystemApp
             this.btnUpdate.TabIndex = 2;
             this.btnUpdate.Text = "Dəyiş";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // AdminHomePage
             // 
