@@ -34,11 +34,15 @@ namespace QuizSystemApp
             this.lblExams = new System.Windows.Forms.Label();
             this.lblHomePage = new System.Windows.Forms.Label();
             this.btnBackToLogin = new System.Windows.Forms.Button();
+            this.dgrv = new System.Windows.Forms.DataGridView();
+            this.pnlActions.SuspendLayout();
             this.pnlMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrv)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlActions
             // 
+            this.pnlActions.Controls.Add(this.dgrv);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(200, 0);
             this.pnlActions.Name = "pnlActions";
@@ -85,6 +89,14 @@ namespace QuizSystemApp
             this.btnBackToLogin.UseVisualStyleBackColor = true;
             this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
+            // dgrv
+            // 
+            this.dgrv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgrv.Location = new System.Drawing.Point(15, 294);
+            this.dgrv.Name = "dgrv";
+            this.dgrv.Size = new System.Drawing.Size(420, 150);
+            this.dgrv.TabIndex = 0;
+            // 
             // StudentsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
@@ -93,12 +105,15 @@ namespace QuizSystemApp
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "StudentsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentsPage";
+            this.Load += new System.EventHandler(this.StudentsPage_Load);
+            this.pnlActions.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgrv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -110,5 +125,6 @@ namespace QuizSystemApp
         private System.Windows.Forms.Label lblExams;
         private System.Windows.Forms.Label lblHomePage;
         private System.Windows.Forms.Button btnBackToLogin;
+        private System.Windows.Forms.DataGridView dgrv;
     }
 }

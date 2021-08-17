@@ -144,6 +144,7 @@ namespace QuizSystemApp
             this.btnSignin.TabIndex = 2;
             this.btnSignin.Text = "Qeydiyyat";
             this.btnSignin.UseVisualStyleBackColor = true;
+            this.btnSignin.Click += new System.EventHandler(this.btnSignin_Click);
             // 
             // lblSurname
             // 

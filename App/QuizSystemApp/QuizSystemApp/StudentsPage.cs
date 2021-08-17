@@ -20,7 +20,7 @@ namespace QuizSystemApp
         //Global Variables
         Student currentStudent;
 
-        //
+        //Form events
         private void btnBackToLogin_Click(object sender, EventArgs e)
         {
             Intro intro = new Intro();
@@ -40,6 +40,11 @@ namespace QuizSystemApp
             };
             this.pnlActions.Controls.Add(studentHomePage);
             studentHomePage.Show();
+        }
+
+        private void StudentsPage_Load(object sender, EventArgs e)
+        {
+            lblHomePage_Click(sender,e);
         }
     }
 }

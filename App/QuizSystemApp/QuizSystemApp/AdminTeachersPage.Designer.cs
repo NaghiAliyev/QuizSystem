@@ -100,14 +100,14 @@ namespace QuizSystemApp
             this.tbPassword.Location = new System.Drawing.Point(190, 162);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(212, 27);
-            this.tbPassword.TabIndex = 11;
+            this.tbPassword.TabIndex = 7;
             // 
             // tbEmail
             // 
             this.tbEmail.Location = new System.Drawing.Point(190, 115);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(212, 27);
-            this.tbEmail.TabIndex = 12;
+            this.tbEmail.TabIndex = 6;
             // 
             // lblPassword
             // 
@@ -115,7 +115,7 @@ namespace QuizSystemApp
             this.lblPassword.Location = new System.Drawing.Point(110, 165);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 21);
-            this.lblPassword.TabIndex = 4;
+            this.lblPassword.TabIndex = 3;
             this.lblPassword.Text = "Şifrəsi:";
             // 
             // tbSurname
@@ -123,7 +123,7 @@ namespace QuizSystemApp
             this.tbSurname.Location = new System.Drawing.Point(190, 70);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(212, 27);
-            this.tbSurname.TabIndex = 13;
+            this.tbSurname.TabIndex = 5;
             // 
             // lblEmail
             // 
@@ -131,7 +131,7 @@ namespace QuizSystemApp
             this.lblEmail.Location = new System.Drawing.Point(110, 118);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(74, 21);
-            this.lblEmail.TabIndex = 5;
+            this.lblEmail.TabIndex = 2;
             this.lblEmail.Text = "E-Poçtu:";
             // 
             // tbName
@@ -139,7 +139,7 @@ namespace QuizSystemApp
             this.tbName.Location = new System.Drawing.Point(190, 26);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(212, 27);
-            this.tbName.TabIndex = 14;
+            this.tbName.TabIndex = 4;
             // 
             // lblSurname
             // 
@@ -147,7 +147,7 @@ namespace QuizSystemApp
             this.lblSurname.Location = new System.Drawing.Point(119, 73);
             this.lblSurname.Name = "lblSurname";
             this.lblSurname.Size = new System.Drawing.Size(65, 21);
-            this.lblSurname.TabIndex = 6;
+            this.lblSurname.TabIndex = 1;
             this.lblSurname.Text = "Soyadı:";
             // 
             // btnClear
@@ -155,17 +155,18 @@ namespace QuizSystemApp
             this.btnClear.Location = new System.Drawing.Point(379, 212);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(94, 39);
-            this.btnClear.TabIndex = 8;
+            this.btnClear.TabIndex = 9;
             this.btnClear.Text = "Təmizlə";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(267, 212);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(94, 39);
-            this.btnDelete.TabIndex = 9;
+            this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
             // 
@@ -174,7 +175,7 @@ namespace QuizSystemApp
             this.btnSave.Location = new System.Drawing.Point(157, 212);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 39);
-            this.btnSave.TabIndex = 10;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Əlavə et";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -185,7 +186,7 @@ namespace QuizSystemApp
             this.lblName.Location = new System.Drawing.Point(143, 29);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(41, 21);
-            this.lblName.TabIndex = 7;
+            this.lblName.TabIndex = 0;
             this.lblName.Text = "Adı:";
             // 
             // AdminTeachersPage

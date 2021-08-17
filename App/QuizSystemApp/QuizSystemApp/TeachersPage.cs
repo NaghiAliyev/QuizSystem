@@ -39,5 +39,10 @@ namespace QuizSystemApp
             this.pnlActions.Controls.Add(teacherHomePage);
             teacherHomePage.Show();
         }
+
+        private void TeachersPage_Load(object sender, EventArgs e)
+        {
+            lblHomePage_Click(sender,e);
+        }
     }
 }

@@ -65,7 +65,7 @@ namespace QuizSystemApp
             this.btnUpdate.Location = new System.Drawing.Point(201, 214);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 34);
-            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Dəyiş";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -111,7 +111,7 @@ namespace QuizSystemApp
             this.tbPassword.Location = new System.Drawing.Point(105, 172);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(196, 27);
-            this.tbPassword.TabIndex = 1;
+            this.tbPassword.TabIndex = 4;
             // 
             // lblPassword
             // 
@@ -127,7 +127,7 @@ namespace QuizSystemApp
             this.tbSurname.Location = new System.Drawing.Point(105, 90);
             this.tbSurname.Name = "tbSurname";
             this.tbSurname.Size = new System.Drawing.Size(196, 27);
-            this.tbSurname.TabIndex = 1;
+            this.tbSurname.TabIndex = 2;
             // 
             // tbName
             // 
@@ -142,7 +142,7 @@ namespace QuizSystemApp
             this.tbEmail.Location = new System.Drawing.Point(105, 134);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(196, 27);
-            this.tbEmail.TabIndex = 1;
+            this.tbEmail.TabIndex = 3;
             // 
             // StudentHomePage
             // 
@@ -152,7 +152,7 @@ namespace QuizSystemApp
             this.Controls.Add(this.pnlContent);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "StudentHomePage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentHomePage";

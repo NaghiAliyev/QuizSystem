@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -37,6 +38,14 @@ namespace QuizSystemApp
             tbPassword.Text = teacher.password;
         }
 
+        private void GetNewData()
+        {
+            teacher.name = tbName.Text;
+            teacher.surname = tbSurname.Text;
+            teacher.email = tbEmail.Text;
+            teacher.password = tbPassword.Text;
+        }
+
         //Form events
         private void AdminTeachersPage_Load(object sender, EventArgs e)
         {
@@ -45,21 +54,34 @@ namespace QuizSystemApp
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            using (DBEntities db = new DBEntities())
+            try
             {
-                teacher.name = tbName.Text;
-                teacher.surname = tbSurname.Text;
-                teacher.email = tbEmail.Text;
-                teacher.password = tbPassword.Text;
-                db.Teachers.Add(teacher);
-                db.SaveChanges();
+                GetNewData();
+                using (DBEntities db = new DBEntities())
+                {
+                    if (teacher.id == 0)
+                    {
+                        db.Teachers.Add(teacher);
+                        db.SaveChanges();
 
+                        PopulateDGV();
+                        MessageBox.Show("Əlavə etmə uğurla yerinə yetirildi!", "Bildiriş", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        db.Entry(teacher).State = EntityState.Modified;
+                        MessageBox.Show("Dəyişilmə uğurla yerinə yetirildi!", "Bildiriş", MessageBoxButtons.OK);
+                    }
+                    db.SaveChanges();
+                }
+                btnClear_Click(sender, e);
                 PopulateDGV();
-
-                btnClear_Click(sender,e);
-
-                MessageBox.Show("Qeydiyyat uğurla həyata keçirildi!");
             }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Əlavə etmə uğursuz oldu!", "Bildiriş", MessageBoxButtons.OK);
+            }
+           
             btnSave.Text = "Dəyiş";
             btnDelete.Enabled = true;
         }
@@ -72,6 +94,8 @@ namespace QuizSystemApp
                 teacher = db.Teachers.Where(x => x.id == teacher.id).FirstOrDefault();
                 FillInputs();
             }
+            btnSave.Text = "Dəyiş";
+            btnDelete.Enabled = true;
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -80,6 +104,9 @@ namespace QuizSystemApp
             tbSurname.Text = "";
             tbEmail.Text = "";
             tbPassword.Text = "";
+            btnSave.Text = "Əlavə et";
+            btnDelete.Enabled = false;
+            teacher.id = 0;
         }
     }
 }

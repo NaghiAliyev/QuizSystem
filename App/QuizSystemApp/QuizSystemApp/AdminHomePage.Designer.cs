@@ -70,7 +70,7 @@ namespace QuizSystemApp
             this.tbPassword.Location = new System.Drawing.Point(105, 129);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.Size = new System.Drawing.Size(196, 27);
-            this.tbPassword.TabIndex = 1;
+            this.tbPassword.TabIndex = 2;
             // 
             // lblTitle
             // 
@@ -99,7 +99,7 @@ namespace QuizSystemApp
             this.btnUpdate.Location = new System.Drawing.Point(189, 179);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 34);
-            this.btnUpdate.TabIndex = 2;
+            this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Dəyiş";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
