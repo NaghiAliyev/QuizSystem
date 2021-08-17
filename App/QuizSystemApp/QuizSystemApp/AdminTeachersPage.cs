@@ -50,6 +50,7 @@ namespace QuizSystemApp
         private void AdminTeachersPage_Load(object sender, EventArgs e)
         {
             PopulateDGV();
+            btnClear_Click(sender, e);
         }
 
         private void btnSave_Click(object sender, EventArgs e)
