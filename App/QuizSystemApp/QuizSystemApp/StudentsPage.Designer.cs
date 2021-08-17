@@ -34,19 +34,15 @@ namespace QuizSystemApp
             this.lblExams = new System.Windows.Forms.Label();
             this.lblHomePage = new System.Windows.Forms.Label();
             this.btnBackToLogin = new System.Windows.Forms.Button();
-            this.dgrv = new System.Windows.Forms.DataGridView();
-            this.pnlActions.SuspendLayout();
             this.pnlMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrv)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlActions
             // 
-            this.pnlActions.Controls.Add(this.dgrv);
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(200, 0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(447, 456);
+            this.pnlActions.Size = new System.Drawing.Size(567, 486);
             this.pnlActions.TabIndex = 5;
             // 
             // pnlMenu
@@ -57,7 +53,7 @@ namespace QuizSystemApp
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 456);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 486);
             this.pnlMenu.TabIndex = 6;
             // 
             // lblExams
@@ -68,6 +64,7 @@ namespace QuizSystemApp
             this.lblExams.Size = new System.Drawing.Size(98, 21);
             this.lblExams.TabIndex = 4;
             this.lblExams.Text = "İmtahanlar";
+            this.lblExams.Click += new System.EventHandler(this.lblExams_Click);
             // 
             // lblHomePage
             // 
@@ -89,19 +86,11 @@ namespace QuizSystemApp
             this.btnBackToLogin.UseVisualStyleBackColor = true;
             this.btnBackToLogin.Click += new System.EventHandler(this.btnBackToLogin_Click);
             // 
-            // dgrv
-            // 
-            this.dgrv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgrv.Location = new System.Drawing.Point(15, 294);
-            this.dgrv.Name = "dgrv";
-            this.dgrv.Size = new System.Drawing.Size(420, 150);
-            this.dgrv.TabIndex = 0;
-            // 
             // StudentsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(647, 456);
+            this.ClientSize = new System.Drawing.Size(767, 486);
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -110,10 +99,8 @@ namespace QuizSystemApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "StudentsPage";
             this.Load += new System.EventHandler(this.StudentsPage_Load);
-            this.pnlActions.ResumeLayout(false);
             this.pnlMenu.ResumeLayout(false);
             this.pnlMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgrv)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -125,6 +112,5 @@ namespace QuizSystemApp
         private System.Windows.Forms.Label lblExams;
         private System.Windows.Forms.Label lblHomePage;
         private System.Windows.Forms.Button btnBackToLogin;
-        private System.Windows.Forms.DataGridView dgrv;
     }
 }

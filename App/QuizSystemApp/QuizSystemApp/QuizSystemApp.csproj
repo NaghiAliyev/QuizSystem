@@ -132,6 +132,12 @@
     <Compile Include="Student.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StudentExamsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentExamsPage.Designer.cs">
+      <DependentUpon>StudentExamsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="StudentHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
     </Compile>
     <Compile Include="StudentsPage.Designer.cs">
       <DependentUpon>StudentsPage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StudentTakeExam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StudentTakeExam.Designer.cs">
+      <DependentUpon>StudentTakeExam.cs</DependentUpon>
     </Compile>
     <Compile Include="TakeExam.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -204,11 +216,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="StudentExamsPage.resx">
+      <DependentUpon>StudentExamsPage.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StudentHomePage.resx">
       <DependentUpon>StudentHomePage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StudentsPage.resx">
       <DependentUpon>StudentsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StudentTakeExam.resx">
+      <DependentUpon>StudentTakeExam.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherExamsPage.resx">
       <DependentUpon>TeacherExamsPage.cs</DependentUpon>
