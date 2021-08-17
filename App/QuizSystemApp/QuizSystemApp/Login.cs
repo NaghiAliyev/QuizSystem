@@ -146,7 +146,7 @@ namespace QuizSystemApp
         {
             switch (status)
             {
-                case "Admin":
+                case "Adminka":
                     using (DBEntities db = new DBEntities())
                     {
 
