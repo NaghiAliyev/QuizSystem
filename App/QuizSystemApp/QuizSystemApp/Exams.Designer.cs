@@ -35,15 +35,18 @@ namespace QuizSystemApp
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnConfirmExam = new System.Windows.Forms.Button();
             this.pnlQuestion = new System.Windows.Forms.Panel();
+            this.btnConfirmQuestion = new System.Windows.Forms.Button();
+            this.lblSelectCorrectVariant = new System.Windows.Forms.Label();
+            this.cmbVariants = new System.Windows.Forms.ComboBox();
             this.pnlVariantTemplate = new System.Windows.Forms.Panel();
-            this.rb = new System.Windows.Forms.RadioButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.lblVariant = new System.Windows.Forms.Label();
             this.btnAddVariant = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbQuestionText = new System.Windows.Forms.TextBox();
             this.lblQuestionTitle = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnRemoveLastChild = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlQuestion.SuspendLayout();
@@ -65,7 +68,6 @@ namespace QuizSystemApp
             this.tbExamTitle.Name = "tbExamTitle";
             this.tbExamTitle.Size = new System.Drawing.Size(206, 27);
             this.tbExamTitle.TabIndex = 1;
-            this.tbExamTitle.TextChanged += new System.EventHandler(this.tbExamTitle_TextChanged);
             // 
             // pnlTop
             // 
@@ -74,7 +76,7 @@ namespace QuizSystemApp
             this.pnlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTop.Location = new System.Drawing.Point(0, 0);
             this.pnlTop.Name = "pnlTop";
-            this.pnlTop.Size = new System.Drawing.Size(765, 74);
+            this.pnlTop.Size = new System.Drawing.Size(777, 74);
             this.pnlTop.TabIndex = 2;
             // 
             // pnlContent
@@ -84,53 +86,74 @@ namespace QuizSystemApp
             this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContent.Location = new System.Drawing.Point(0, 74);
             this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(765, 495);
+            this.pnlContent.Size = new System.Drawing.Size(777, 571);
             this.pnlContent.TabIndex = 2;
             // 
             // btnConfirmExam
             // 
-            this.btnConfirmExam.Location = new System.Drawing.Point(595, 443);
+            this.btnConfirmExam.Location = new System.Drawing.Point(549, 519);
             this.btnConfirmExam.Name = "btnConfirmExam";
-            this.btnConfirmExam.Size = new System.Drawing.Size(112, 40);
+            this.btnConfirmExam.Size = new System.Drawing.Size(174, 40);
             this.btnConfirmExam.TabIndex = 2;
-            this.btnConfirmExam.Text = "Bitir";
+            this.btnConfirmExam.Text = "İmtahanı Tamamla";
             this.btnConfirmExam.UseVisualStyleBackColor = true;
+            this.btnConfirmExam.Visible = false;
             this.btnConfirmExam.Click += new System.EventHandler(this.btnConfirmExam_Click);
             // 
             // pnlQuestion
             // 
+            this.pnlQuestion.Controls.Add(this.btnRemoveLastChild);
+            this.pnlQuestion.Controls.Add(this.btnConfirmQuestion);
+            this.pnlQuestion.Controls.Add(this.lblSelectCorrectVariant);
+            this.pnlQuestion.Controls.Add(this.cmbVariants);
             this.pnlQuestion.Controls.Add(this.pnlVariantTemplate);
             this.pnlQuestion.Controls.Add(this.btnAddVariant);
-            this.pnlQuestion.Controls.Add(this.textBox2);
+            this.pnlQuestion.Controls.Add(this.tbQuestionText);
             this.pnlQuestion.Controls.Add(this.lblQuestionTitle);
             this.pnlQuestion.Controls.Add(this.btnNext);
             this.pnlQuestion.Controls.Add(this.btnPrevious);
             this.pnlQuestion.Location = new System.Drawing.Point(28, 22);
             this.pnlQuestion.Name = "pnlQuestion";
-            this.pnlQuestion.Size = new System.Drawing.Size(712, 415);
+            this.pnlQuestion.Size = new System.Drawing.Size(712, 491);
             this.pnlQuestion.TabIndex = 0;
+            // 
+            // btnConfirmQuestion
+            // 
+            this.btnConfirmQuestion.Location = new System.Drawing.Point(531, 437);
+            this.btnConfirmQuestion.Name = "btnConfirmQuestion";
+            this.btnConfirmQuestion.Size = new System.Drawing.Size(164, 40);
+            this.btnConfirmQuestion.TabIndex = 2;
+            this.btnConfirmQuestion.Text = "Testi Tamamla";
+            this.btnConfirmQuestion.UseVisualStyleBackColor = true;
+            this.btnConfirmQuestion.Visible = false;
+            this.btnConfirmQuestion.Click += new System.EventHandler(this.btnConfirmQuestion_Click);
+            // 
+            // lblSelectCorrectVariant
+            // 
+            this.lblSelectCorrectVariant.AutoSize = true;
+            this.lblSelectCorrectVariant.Location = new System.Drawing.Point(285, 447);
+            this.lblSelectCorrectVariant.Name = "lblSelectCorrectVariant";
+            this.lblSelectCorrectVariant.Size = new System.Drawing.Size(168, 21);
+            this.lblSelectCorrectVariant.TabIndex = 5;
+            this.lblSelectCorrectVariant.Text = "Düzgün variantı seç:";
+            // 
+            // cmbVariants
+            // 
+            this.cmbVariants.FormattingEnabled = true;
+            this.cmbVariants.Location = new System.Drawing.Point(470, 444);
+            this.cmbVariants.Name = "cmbVariants";
+            this.cmbVariants.Size = new System.Drawing.Size(55, 29);
+            this.cmbVariants.TabIndex = 4;
             // 
             // pnlVariantTemplate
             // 
-            this.pnlVariantTemplate.Controls.Add(this.rb);
             this.pnlVariantTemplate.Controls.Add(this.textBox3);
             this.pnlVariantTemplate.Controls.Add(this.lblVariant);
             this.pnlVariantTemplate.Location = new System.Drawing.Point(27, 170);
             this.pnlVariantTemplate.Name = "pnlVariantTemplate";
-            this.pnlVariantTemplate.Size = new System.Drawing.Size(637, 45);
+            this.pnlVariantTemplate.Size = new System.Drawing.Size(498, 45);
             this.pnlVariantTemplate.TabIndex = 3;
             this.pnlVariantTemplate.Visible = false;
-            // 
-            // rb
-            // 
-            this.rb.AutoSize = true;
-            this.rb.Location = new System.Drawing.Point(485, 10);
-            this.rb.Name = "rb";
-            this.rb.Size = new System.Drawing.Size(149, 25);
-            this.rb.TabIndex = 2;
-            this.rb.TabStop = true;
-            this.rb.Text = "Düzgün variant";
-            this.rb.UseVisualStyleBackColor = true;
             // 
             // textBox3
             // 
@@ -158,13 +181,13 @@ namespace QuizSystemApp
             this.btnAddVariant.UseVisualStyleBackColor = true;
             this.btnAddVariant.Click += new System.EventHandler(this.btnAddVariant_Click);
             // 
-            // textBox2
+            // tbQuestionText
             // 
-            this.textBox2.Location = new System.Drawing.Point(104, 26);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(471, 85);
-            this.textBox2.TabIndex = 2;
+            this.tbQuestionText.Location = new System.Drawing.Point(104, 26);
+            this.tbQuestionText.Multiline = true;
+            this.tbQuestionText.Name = "tbQuestionText";
+            this.tbQuestionText.Size = new System.Drawing.Size(471, 85);
+            this.tbQuestionText.TabIndex = 2;
             // 
             // lblQuestionTitle
             // 
@@ -183,6 +206,7 @@ namespace QuizSystemApp
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "->";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Visible = false;
             // 
             // btnPrevious
             // 
@@ -192,16 +216,27 @@ namespace QuizSystemApp
             this.btnPrevious.TabIndex = 0;
             this.btnPrevious.Text = "<-";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Visible = false;
+            // 
+            // btnRemoveLastChild
+            // 
+            this.btnRemoveLastChild.Location = new System.Drawing.Point(651, 391);
+            this.btnRemoveLastChild.Name = "btnRemoveLastChild";
+            this.btnRemoveLastChild.Size = new System.Drawing.Size(44, 40);
+            this.btnRemoveLastChild.TabIndex = 6;
+            this.btnRemoveLastChild.Text = "x";
+            this.btnRemoveLastChild.UseVisualStyleBackColor = true;
+            this.btnRemoveLastChild.Click += new System.EventHandler(this.btnRemoveLastChild_Click);
             // 
             // Exams
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(765, 569);
+            this.ClientSize = new System.Drawing.Size(777, 645);
             this.Controls.Add(this.pnlContent);
             this.Controls.Add(this.pnlTop);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "Exams";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -226,14 +261,17 @@ namespace QuizSystemApp
         private System.Windows.Forms.Panel pnlContent;
         private System.Windows.Forms.Panel pnlQuestion;
         private System.Windows.Forms.Panel pnlVariantTemplate;
-        private System.Windows.Forms.RadioButton rb;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label lblVariant;
         private System.Windows.Forms.Button btnAddVariant;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbQuestionText;
         private System.Windows.Forms.Label lblQuestionTitle;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPrevious;
         private System.Windows.Forms.Button btnConfirmExam;
+        private System.Windows.Forms.Label lblSelectCorrectVariant;
+        private System.Windows.Forms.ComboBox cmbVariants;
+        private System.Windows.Forms.Button btnConfirmQuestion;
+        private System.Windows.Forms.Button btnRemoveLastChild;
     }
 }

@@ -116,6 +116,7 @@ namespace QuizSystemApp
             this.btnDelete.TabIndex = 10;
             this.btnDelete.Text = "Sil";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnClear
             // 
@@ -212,6 +213,7 @@ namespace QuizSystemApp
             this.Name = "AdminStudentsPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminStudentsPage";
+            this.Load += new System.EventHandler(this.AdminStudentsPage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgrvStudents)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

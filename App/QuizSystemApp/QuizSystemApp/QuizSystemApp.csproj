@@ -150,6 +150,12 @@
     <Compile Include="Teacher.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TeacherExamsPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherExamsPage.Designer.cs">
+      <DependentUpon>TeacherExamsPage.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeacherHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,6 +209,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StudentsPage.resx">
       <DependentUpon>StudentsPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherExamsPage.resx">
+      <DependentUpon>TeacherExamsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherHomePage.resx">
       <DependentUpon>TeacherHomePage.cs</DependentUpon>
