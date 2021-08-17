@@ -58,7 +58,7 @@ namespace QuizSystemApp
                 currentStudent.surname = tbSurname.Text;
                 db.Entry(currentStudent).State = EntityState.Modified;
                 db.SaveChanges();
-                MessageBox.Show("Şifrə uğurla yeniləndi!", "Bildiriş", MessageBoxButtons.OK);
+                MessageBox.Show("Məlumatlar uğurla yeniləndi!", "Bildiriş", MessageBoxButtons.OK);
                 parent.Hide();
                 Login login = new Login("Student");
                 login.Show();

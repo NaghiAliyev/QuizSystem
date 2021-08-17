@@ -42,7 +42,7 @@ namespace QuizSystemApp
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(200, 0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(512, 527);
+            this.pnlActions.Size = new System.Drawing.Size(687, 554);
             this.pnlActions.TabIndex = 1;
             // 
             // pnlMenu
@@ -53,7 +53,7 @@ namespace QuizSystemApp
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 527);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 554);
             this.pnlMenu.TabIndex = 2;
             // 
             // lblExams
@@ -64,6 +64,7 @@ namespace QuizSystemApp
             this.lblExams.Size = new System.Drawing.Size(98, 21);
             this.lblExams.TabIndex = 4;
             this.lblExams.Text = "İmtahanlar";
+            this.lblExams.Click += new System.EventHandler(this.lblExams_Click);
             // 
             // lblHomePage
             // 
@@ -89,7 +90,7 @@ namespace QuizSystemApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 527);
+            this.ClientSize = new System.Drawing.Size(887, 554);
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

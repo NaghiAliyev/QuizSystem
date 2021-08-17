@@ -46,3 +46,4 @@ D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystem
 D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.TeachersPage.resources
 D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.StudentHomePage.resources
 D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.StudentsPage.resources
+D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.TeacherExamsPage.resources

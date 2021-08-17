@@ -16,10 +16,12 @@ namespace QuizSystemApp
         {
             InitializeComponent();
         }
+        // Global Variables
+        Exam currentExam = new Exam();
 
         private void btnGoToExams_Click(object sender, EventArgs e)
         {
-            Exams exams = new Exams("admin");
+            Exams exams = new Exams("Admin", currentExam);
             exams.Show();
         }
     }
