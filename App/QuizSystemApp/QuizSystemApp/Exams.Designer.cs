@@ -35,6 +35,7 @@ namespace QuizSystemApp
             this.pnlContent = new System.Windows.Forms.Panel();
             this.btnConfirmExam = new System.Windows.Forms.Button();
             this.pnlQuestion = new System.Windows.Forms.Panel();
+            this.btnRemoveLastChild = new System.Windows.Forms.Button();
             this.btnConfirmQuestion = new System.Windows.Forms.Button();
             this.lblSelectCorrectVariant = new System.Windows.Forms.Label();
             this.cmbVariants = new System.Windows.Forms.ComboBox();
@@ -46,7 +47,6 @@ namespace QuizSystemApp
             this.lblQuestionTitle = new System.Windows.Forms.Label();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
-            this.btnRemoveLastChild = new System.Windows.Forms.Button();
             this.pnlTop.SuspendLayout();
             this.pnlContent.SuspendLayout();
             this.pnlQuestion.SuspendLayout();
@@ -116,6 +116,16 @@ namespace QuizSystemApp
             this.pnlQuestion.Name = "pnlQuestion";
             this.pnlQuestion.Size = new System.Drawing.Size(712, 491);
             this.pnlQuestion.TabIndex = 0;
+            // 
+            // btnRemoveLastChild
+            // 
+            this.btnRemoveLastChild.Location = new System.Drawing.Point(651, 391);
+            this.btnRemoveLastChild.Name = "btnRemoveLastChild";
+            this.btnRemoveLastChild.Size = new System.Drawing.Size(44, 40);
+            this.btnRemoveLastChild.TabIndex = 6;
+            this.btnRemoveLastChild.Text = "x";
+            this.btnRemoveLastChild.UseVisualStyleBackColor = true;
+            this.btnRemoveLastChild.Click += new System.EventHandler(this.btnRemoveLastChild_Click);
             // 
             // btnConfirmQuestion
             // 
@@ -207,6 +217,7 @@ namespace QuizSystemApp
             this.btnNext.Text = "->";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Visible = false;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -217,16 +228,7 @@ namespace QuizSystemApp
             this.btnPrevious.Text = "<-";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Visible = false;
-            // 
-            // btnRemoveLastChild
-            // 
-            this.btnRemoveLastChild.Location = new System.Drawing.Point(651, 391);
-            this.btnRemoveLastChild.Name = "btnRemoveLastChild";
-            this.btnRemoveLastChild.Size = new System.Drawing.Size(44, 40);
-            this.btnRemoveLastChild.TabIndex = 6;
-            this.btnRemoveLastChild.Text = "x";
-            this.btnRemoveLastChild.UseVisualStyleBackColor = true;
-            this.btnRemoveLastChild.Click += new System.EventHandler(this.btnRemoveLastChild_Click);
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // Exams
             // 

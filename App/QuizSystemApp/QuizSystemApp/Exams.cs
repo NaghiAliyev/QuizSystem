@@ -20,6 +20,8 @@ namespace QuizSystemApp
         // Global Variables
         Exam currentExam = new Exam();
         List<Panel> variants = new List<Panel>();
+        List<Question> questions = new List<Question>();
+        int questionOrder = 0;
         Panel previousPanel;
         int count = 0;
         int totalQuestion = 0;
@@ -38,7 +40,7 @@ namespace QuizSystemApp
             }
         }
 
-        private void CreateVariant()
+        private void CreateVariant(string text)
         {
             Panel variant = new Panel();
             variant.Width = pnlVariantTemplate.Width;
@@ -53,6 +55,7 @@ namespace QuizSystemApp
             textBox.Location = pnlVariantTemplate.Controls[0].Location;
             variant.Controls.Add(label);
             variant.Controls.Add(textBox);
+            textBox.Text = text;
             previousPanel = variant;
             pnlQuestion.Controls.Add(variant);
             variants.Add(variant);
@@ -74,7 +77,7 @@ namespace QuizSystemApp
                 {
                     btnConfirmQuestion.Visible = true;
                 }
-                CreateVariant();
+                CreateVariant("");
             }
             else
             {
@@ -84,25 +87,45 @@ namespace QuizSystemApp
 
         private void btnConfirmQuestion_Click(object sender, EventArgs e)
         {
-            using (DBEntities db = new DBEntities())
+            try
+            {
+                using (DBEntities db = new DBEntities())
+                {
+                    if (btnConfirmQuestion.Text == "Testi Tamamla")
+                    {
+                        Question question = new Question();
+                        question.ExamID = currentExam.id;
+                        question.Text = tbQuestionText.Text;
+                        question.correctVariant = cmbVariants.SelectedItem.ToString();
+
+                        foreach (Panel pnlVariant in variants)
+                        {
+                            Variant variant = new Variant();
+                            variant.variantType = pnlVariant.Controls[0].Text[0].ToString();
+                            variant.variantText = pnlVariant.Controls[1].Text;
+                            variant.questionId = question.id;
+                            //currentQuestionVariants.Add(variant);
+                            db.Variants.Add(variant);
+                        }
+                        db.Questions.Add(question);
+                        db.SaveChanges();
+                        questions.Add(question);
+
+                        btnNext.Visible = true;
+                        btnNext.Enabled = true;
+                        btnConfirmQuestion.Text = "Testi düzəlt";
+                        MessageBox.Show("Sual əlavə edildi!");
+                    }
+                    else if (btnConfirmQuestion.Text == "Testi düzəlt")
+                    {
+                        Question question = questions[questionOrder];
+                    }
+                }
+            }
+            catch (Exception exception)
             {
 
-                Question question = new Question();
-                question.ExamID = currentExam.id;
-                question.Text = tbQuestionText.Text;
-                question.correctVariant = cmbVariants.SelectedItem.ToString();
-                
-                foreach (Panel pnlVariant in variants)
-                {
-                    Variant variant = new Variant();
-                    variant.variantType = pnlVariant.Controls[0].Text[0].ToString();
-                    variant.variantText = pnlVariant.Controls[1].Text;
-                    variant.questionId = question.id;
-                    //currentQuestionVariants.Add(variant);
-                    db.Variants.Add(variant);
-                }
-                db.Questions.Add(question);
-                db.SaveChanges();
+               MessageBox.Show("Düzgün variantı daxil etməmisiniz!");
             }
         }
 
@@ -114,18 +137,89 @@ namespace QuizSystemApp
 
         private void btnRemoveLastChild_Click(object sender, EventArgs e)
         {
-            if (variants.Count < 5 && variants.Count >= 2)
+            if (variants.Count > 2)
             {
-                btnAddVariant.Enabled = true;
                 pnlQuestion.Controls.Remove(variants[variants.Count - 1]);
                 variants.RemoveAt(variants.Count - 1);
                 cmbVariants.Items.RemoveAt(cmbVariants.Items.Count - 1);
+                count--;
+                variantType--;
             }
-            else
+            if (variants.Count < 2)
             {
                 btnConfirmQuestion.Visible = false;
             }
-            
+            if (variants.Count < 5)
+            {
+                btnAddVariant.Enabled = true;
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            btnPrevious.Visible = true;
+            btnPrevious.Enabled = true;
+            ++questionOrder;
+            MessageBox.Show(questionOrder.ToString());
+
+            for (int i = variants.Count - 1; i >= 0; i--)
+            {
+                pnlQuestion.Controls.Remove(variants[variants.Count - 1]);
+                variants.RemoveAt(variants.Count - 1);
+                cmbVariants.Items.RemoveAt(cmbVariants.Items.Count - 1);
+                count--;
+                variantType--;
+            }
+
+            if (questionOrder == questions.Count)
+            {
+                tbQuestionText.Text = "";
+                btnConfirmQuestion.Text = "Testi Tamamla";
+                btnNext.Enabled = false;
+            }
+            else
+            {
+                Question question = questions[questionOrder];
+                tbQuestionText.Text = question.Text;
+                btnNext.Enabled = false;
+                btnConfirmQuestion.Text = "Testi düzəlt";
+
+                foreach (var variant in question.Variants)
+                {
+                    CreateVariant(variant.variantText);
+                }
+            }
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show((--questionOrder).ToString());
+            btnNext.Enabled = true;
+            if (--questionOrder >= 0)
+            {
+                --questionOrder;
+                Question question = questions[questionOrder];
+                tbQuestionText.Text = question.Text;
+                btnConfirmQuestion.Text = "Testi düzəlt";
+
+                for (int i = variants.Count - 1; i >= 0; i--)
+                {
+                    pnlQuestion.Controls.Remove(variants[variants.Count - 1]);
+                    variants.RemoveAt(variants.Count - 1);
+                    cmbVariants.Items.RemoveAt(cmbVariants.Items.Count - 1);
+                    count--;
+                    variantType--;
+                }
+
+                foreach (var variant in question.Variants)
+                {
+                    CreateVariant(variant.variantText);
+                }
+            }
+            else
+            {
+                btnPrevious.Enabled = false;
+            }
         }
     }
 }
