@@ -20,6 +20,7 @@ namespace QuizSystemApp
             InitializeComponent();
         }
         //Global Variables
+
         Teacher teacher = new Teacher();
 
         //Methods

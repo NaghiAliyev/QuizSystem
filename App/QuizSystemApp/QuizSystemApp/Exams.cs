@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,8 +17,10 @@ namespace QuizSystemApp
         {
             InitializeComponent();
             currentExam = _currentExam;
+            status = _status;
         }
         // Global Variables
+        string status;
         Exam currentExam = new Exam();
         List<Panel> variants = new List<Panel>();
         List<Question> questions = new List<Question>();
@@ -29,17 +32,6 @@ namespace QuizSystemApp
         List<Variant> currentQuestionVariants = new List<Variant>();
 
         // Methods
-        private void checkCorrectVariant(object sender, EventArgs e)
-        {
-            foreach (Panel variant in variants)
-            {
-                if (variant.Controls[0] is CheckBox)
-                {
-                    CheckBox checkBox = variant.Controls[0] as CheckBox;
-                }
-            }
-        }
-
         private void CreateVariant(string text)
         {
             Panel variant = new Panel();
@@ -65,19 +57,44 @@ namespace QuizSystemApp
         // Form Events
         private void Exams_Load(object sender, EventArgs e)
         {
-            tbExamTitle.Text = currentExam.title;
+            tbExamTitle.Text = currentExam.title; // imtahanin verilenleri gelsin
+            if (currentExam.Questions.ElementAtOrDefault(0) != null)
+            {
+                Question currentQuestion = currentExam.Questions.ElementAtOrDefault(0);
+                tbQuestionText.Text = currentQuestion.Text;
+                foreach (var variant in currentQuestion.Variants)
+                {
+                    CreateVariant(variant.variantText);
+                }
+                if (currentQuestion.Variants.Count > 2)
+                {
+                    btnConfirmQuestion.Visible = true;
+                }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(currentExam.Questions.ElementAtOrDefault(0).correctVariant);
+                btnNext.Visible = true;
+                btnConfirmQuestion.Text = "Testi düzəlt";
+                questions = currentExam.Questions.ToList<Question>();
+                foreach (var item in questions)
+                {
+                    foreach (var element in item.Variants)
+                    {
+                        //        kodun Azərbaycanlılar tərəfindən yazıldığının isbatıdır!!!
+                    }
+                }
+            }
         }
 
-        
+
         private void btnAddVariant_Click(object sender, EventArgs e)
         {
-            if (variants.Count<=4)
+            if (variants.Count <= 4)
             {
-                if (variants.Count>=1)
+                if (variants.Count >= 1)
                 {
                     btnConfirmQuestion.Visible = true;
                 }
                 CreateVariant("");
+                btnAddVariant.Enabled = true;
             }
             else
             {
@@ -118,21 +135,42 @@ namespace QuizSystemApp
                     }
                     else if (btnConfirmQuestion.Text == "Testi düzəlt")
                     {
-                        Question question = questions[questionOrder];
+                        Question question = currentExam.Questions.ElementAtOrDefault(questionOrder);
+                        currentQuestionVariants.Clear();
+                        question.Text = tbQuestionText.Text;
+                        foreach (Panel pnlVariant in variants)
+                        {
+                            int index = variants.IndexOf(pnlVariant);
+                            question.Variants.ElementAtOrDefault(index).variantType = pnlVariant.Controls[0].Text[0].ToString();
+                            question.Variants.ElementAtOrDefault(index).variantText = pnlVariant.Controls[1].Text;
+                            question.Variants.ElementAtOrDefault(index).questionId = question.id;
+                            db.Entry(question.Variants.ElementAtOrDefault(index)).State = EntityState.Modified;
+                        }
+                        question.correctVariant = cmbVariants.SelectedItem.ToString();
+                        db.Entry(question).State = EntityState.Modified;
+                        db.SaveChanges();
+                        MessageBox.Show("Düzəliş uğurla yerinə yetirildi!");
                     }
                 }
+                btnConfirmExam.Visible = true;
+                btnConfirmExam.Enabled = true;
             }
             catch (Exception exception)
             {
 
-               MessageBox.Show("Düzgün variantı daxil etməmisiniz!");
+                MessageBox.Show("Düzgün variantı daxil etməmisiniz!");
             }
         }
 
         private void btnConfirmExam_Click(object sender, EventArgs e)
         {
             currentExam.title = tbExamTitle.Text.Trim();
-
+            using (DBEntities db = new DBEntities())
+            {
+                db.Entry(currentExam).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            this.Close();
         }
 
         private void btnRemoveLastChild_Click(object sender, EventArgs e)
@@ -157,10 +195,9 @@ namespace QuizSystemApp
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            btnPrevious.Visible = true;
             btnPrevious.Enabled = true;
-            ++questionOrder;
-            MessageBox.Show(questionOrder.ToString());
+            btnPrevious.Visible = true;
+
 
             for (int i = variants.Count - 1; i >= 0; i--)
             {
@@ -171,33 +208,37 @@ namespace QuizSystemApp
                 variantType--;
             }
 
-            if (questionOrder == questions.Count)
+            if (questionOrder == questions.Count - 1)
             {
                 tbQuestionText.Text = "";
                 btnConfirmQuestion.Text = "Testi Tamamla";
                 btnNext.Enabled = false;
+                btnConfirmQuestion.Visible = false;
+                ++questionOrder;
             }
             else
             {
+                ++questionOrder;
                 Question question = questions[questionOrder];
+                //Question question = currentExam.Questions.ElementAtOrDefault(questionOrder);
                 tbQuestionText.Text = question.Text;
-                btnNext.Enabled = false;
+                btnNext.Enabled = true;
                 btnConfirmQuestion.Text = "Testi düzəlt";
-
+                //Dispose();
                 foreach (var variant in question.Variants)
                 {
                     CreateVariant(variant.variantText);
                 }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(question.correctVariant);
             }
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((--questionOrder).ToString());
             btnNext.Enabled = true;
-            if (--questionOrder >= 0)
+            if (questionOrder >= 1)
             {
-                --questionOrder;
+                questionOrder--;
                 Question question = questions[questionOrder];
                 tbQuestionText.Text = question.Text;
                 btnConfirmQuestion.Text = "Testi düzəlt";
@@ -215,10 +256,15 @@ namespace QuizSystemApp
                 {
                     CreateVariant(variant.variantText);
                 }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(question.correctVariant);
             }
             else
             {
                 btnPrevious.Enabled = false;
+            }
+            if (variants.Count >= 2)
+            {
+                btnConfirmQuestion.Visible = true;
             }
         }
     }

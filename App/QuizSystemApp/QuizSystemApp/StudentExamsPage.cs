@@ -37,7 +37,8 @@ namespace QuizSystemApp
             }
             return false;
         }
-        private void StudentExamsPage_Load(object sender, EventArgs e)
+
+        public void PopulateDGV()
         {
             using (DBEntities db = new DBEntities())
             {
@@ -45,34 +46,40 @@ namespace QuizSystemApp
                 var allExams = db.Exams.Select(x => x).ToList();
                 foreach (var exam in allExams)
                 {
-                    DataGridViewRow row = new DataGridViewRow();
-                    row.CreateCells(dgrvAllExams);
-                    row.Cells[0].Value = exam.id;
-                    row.Cells[1].Value = exam.title;
-                    row.Cells[2].Value = IsTakeExam(exam.id);
-                    if (IsTakeExam(exam.id))
+                    if (exam.Questions.Count!=0)
                     {
-                        row.Cells[3].Value = takeExam.date;
-                        row.Cells[4].Value = takeExam.amountCorrectAnswer;
-                        row.Cells[5].Value = takeExam.amountWrongAnswer;
+                        DataGridViewRow row = new DataGridViewRow();
+                        row.CreateCells(dgrvAllExams);
+                        row.Cells[0].Value = exam.id;
+                        row.Cells[1].Value = exam.title;
+                        row.Cells[2].Value = IsTakeExam(exam.id);
+                        if (IsTakeExam(exam.id))
+                        {
+                            row.Cells[3].Value = takeExam.date;
+                            row.Cells[4].Value = takeExam.amountCorrectAnswer;
+                            row.Cells[5].Value = takeExam.amountWrongAnswer;
+                        }
+                        else
+                        {
+                            row.Cells[3].Value = "-";
+                            row.Cells[4].Value = "-";
+                            row.Cells[5].Value = "-";
+                        }
+                        dgrvAllExams.Rows.Add(row);
                     }
-                    else
-                    {
-                        row.Cells[3].Value = "-";
-                        row.Cells[4].Value = "-";
-                        row.Cells[5].Value = "-";
-                    }
-                    dgrvAllExams.Rows.Add(row);
                 }
-                
+
 
             }
         }
 
-        private void btnGoToExam_Click(object sender, EventArgs e)
+        //Form methods
+        private void StudentExamsPage_Load(object sender, EventArgs e)
         {
-
+            PopulateDGV();
         }
+
+        
 
         private void dgrvAllExams_DoubleClick(object sender, EventArgs e)
         {
@@ -87,7 +94,7 @@ namespace QuizSystemApp
                     selectedExam.id = Convert.ToInt32(dgrvAllExams.CurrentRow.Cells["ID"].Value);
                     selectedExam = db.Exams.Where(x => x.id == selectedExam.id).FirstOrDefault();
                 }
-                StudentTakeExam studentTakeExam = new StudentTakeExam(selectedExam, currentStudent, parent);
+                StudentTakeExam studentTakeExam = new StudentTakeExam(selectedExam, currentStudent);
                 studentTakeExam.Show();
                 parent.Hide();
             }

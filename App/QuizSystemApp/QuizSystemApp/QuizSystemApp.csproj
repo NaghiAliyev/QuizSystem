@@ -162,11 +162,11 @@
     <Compile Include="Teacher.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TeacherExamsPage.cs">
+    <Compile Include="ExamsPage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TeacherExamsPage.Designer.cs">
-      <DependentUpon>TeacherExamsPage.cs</DependentUpon>
+    <Compile Include="ExamsPage.Designer.cs">
+      <DependentUpon>ExamsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="TeacherHomePage.cs">
       <SubType>Form</SubType>
@@ -228,8 +228,8 @@
     <EmbeddedResource Include="StudentTakeExam.resx">
       <DependentUpon>StudentTakeExam.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TeacherExamsPage.resx">
-      <DependentUpon>TeacherExamsPage.cs</DependentUpon>
+    <EmbeddedResource Include="ExamsPage.resx">
+      <DependentUpon>ExamsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherHomePage.resx">
       <DependentUpon>TeacherHomePage.cs</DependentUpon>

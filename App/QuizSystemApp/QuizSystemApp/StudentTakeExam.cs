@@ -12,15 +12,13 @@ namespace QuizSystemApp
 {
     public partial class StudentTakeExam : Form
     {
-        public StudentTakeExam(Exam _currentExam, Student _currentStudent, StudentsPage _grandParent)
+        public StudentTakeExam(Exam _currentExam, Student _currentStudent)
         {
             InitializeComponent();
             currentExam = _currentExam;
             currentStudent = _currentStudent;
-            grandParent = _grandParent;
         }
         // Global Variables
-        StudentsPage grandParent;
         Exam currentExam;
         Student currentStudent;
         Question currentQuestion;
@@ -153,7 +151,8 @@ namespace QuizSystemApp
                 db.SaveChanges();
             }
             this.Hide();
-            grandParent.Show();
+            StudentsPage studentsPage = new StudentsPage(currentStudent);
+            studentsPage.Show();
         }
     }
     

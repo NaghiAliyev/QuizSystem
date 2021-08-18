@@ -1,7 +1,7 @@
 ﻿
 namespace QuizSystemApp
 {
-    partial class TeacherExamsPage
+    partial class ExamsPage
     {
         /// <summary>
         /// Required designer variable.
@@ -31,13 +31,15 @@ namespace QuizSystemApp
         {
             this.btnGoToExam = new System.Windows.Forms.Button();
             this.dgrvAllExams = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuestionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalStudents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.tbTitle = new System.Windows.Forms.TextBox();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuestionCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IsUsed = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TotalStudents = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgrvAllExams)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,37 +60,13 @@ namespace QuizSystemApp
             this.ID,
             this.Title,
             this.QuestionCount,
+            this.IsUsed,
             this.TotalStudents});
             this.dgrvAllExams.Location = new System.Drawing.Point(23, 284);
             this.dgrvAllExams.Name = "dgrvAllExams";
             this.dgrvAllExams.Size = new System.Drawing.Size(622, 230);
             this.dgrvAllExams.TabIndex = 2;
             this.dgrvAllExams.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgrvAllExams_CellContentClick);
-            // 
-            // ID
-            // 
-            this.ID.DataPropertyName = "id";
-            this.ID.HeaderText = "Id";
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            // 
-            // Title
-            // 
-            this.Title.DataPropertyName = "title";
-            this.Title.HeaderText = "Mövzusu";
-            this.Title.Name = "Title";
-            // 
-            // QuestionCount
-            // 
-            this.QuestionCount.DataPropertyName = "questionCount";
-            this.QuestionCount.HeaderText = "Sual sayı";
-            this.QuestionCount.Name = "QuestionCount";
-            // 
-            // TotalStudents
-            // 
-            this.TotalStudents.DataPropertyName = "totalStudent";
-            this.TotalStudents.HeaderText = "İstifadə edən Tələbə sayı";
-            this.TotalStudents.Name = "TotalStudents";
             // 
             // btnClear
             // 
@@ -114,7 +92,50 @@ namespace QuizSystemApp
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(57, 21);
             this.lblTitle.TabIndex = 5;
-            this.lblTitle.Text = "label1";
+            this.lblTitle.Text = "Başlıq:";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(511, 152);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(108, 39);
+            this.btnDelete.TabIndex = 3;
+            this.btnDelete.Text = "Sil";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // ID
+            // 
+            this.ID.DataPropertyName = "ID";
+            this.ID.HeaderText = "Id";
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            // 
+            // Title
+            // 
+            this.Title.DataPropertyName = "title";
+            this.Title.HeaderText = "Mövzusu";
+            this.Title.Name = "Title";
+            // 
+            // QuestionCount
+            // 
+            this.QuestionCount.DataPropertyName = "questionCount";
+            this.QuestionCount.HeaderText = "Sual sayı";
+            this.QuestionCount.Name = "QuestionCount";
+            // 
+            // IsUsed
+            // 
+            this.IsUsed.DataPropertyName = "IsUsed";
+            this.IsUsed.HeaderText = "IsUsed";
+            this.IsUsed.Name = "IsUsed";
+            this.IsUsed.Visible = false;
+            // 
+            // TotalStudents
+            // 
+            this.TotalStudents.DataPropertyName = "totalStudent";
+            this.TotalStudents.HeaderText = "İstifadə edən Tələbə sayı";
+            this.TotalStudents.Name = "TotalStudents";
             // 
             // TeacherExamsPage
             // 
@@ -123,6 +144,7 @@ namespace QuizSystemApp
             this.ClientSize = new System.Drawing.Size(677, 541);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.tbTitle);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnGoToExam);
             this.Controls.Add(this.dgrvAllExams);
@@ -143,12 +165,14 @@ namespace QuizSystemApp
 
         private System.Windows.Forms.Button btnGoToExam;
         private System.Windows.Forms.DataGridView dgrvAllExams;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuestionCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalStudents;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox tbTitle;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuestionCount;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn IsUsed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalStudents;
     }
 }

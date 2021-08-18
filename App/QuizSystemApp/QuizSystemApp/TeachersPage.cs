@@ -48,15 +48,15 @@ namespace QuizSystemApp
         private void lblExams_Click(object sender, EventArgs e)
         {
             this.pnlActions.Controls.Clear();
-            TeacherExamsPage teacherExamPage = new TeacherExamsPage(this)
+            ExamsPage ExamPage = new ExamsPage()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None
             };
-            this.pnlActions.Controls.Add(teacherExamPage);
-            teacherExamPage.Show();
+            this.pnlActions.Controls.Add(ExamPage);
+            ExamPage.Show();
         }
     }
 }
