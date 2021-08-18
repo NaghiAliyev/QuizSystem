@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -65,7 +66,17 @@ namespace QuizSystemApp
         // Form Events
         private void Exams_Load(object sender, EventArgs e)
         {
-            tbExamTitle.Text = currentExam.title;
+            tbExamTitle.Text = currentExam.title; // imtahanin verilenleri gelsin
+            if (currentExam.Questions.ElementAtOrDefault(0) != null)
+            {
+                tbQuestionText.Text = currentExam.Questions.ElementAtOrDefault(0).Text;
+                foreach (var variant in currentExam.Questions.ElementAtOrDefault(0).Variants)
+                {
+                    CreateVariant(variant.variantText);
+                }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(currentExam.Questions.ElementAtOrDefault(0).correctVariant);
+                btnNext.Visible = true;
+            }
         }
 
         
@@ -78,6 +89,7 @@ namespace QuizSystemApp
                     btnConfirmQuestion.Visible = true;
                 }
                 CreateVariant("");
+                btnAddVariant.Enabled = true;
             }
             else
             {
@@ -118,7 +130,10 @@ namespace QuizSystemApp
                     }
                     else if (btnConfirmQuestion.Text == "Testi düzəlt")
                     {
-                        Question question = questions[questionOrder];
+                        Question question = currentExam.Questions.ElementAtOrDefault(questionOrder);
+                        db.Entry(question).State = EntityState.Modified;
+                        db.SaveChanges();
+                        MessageBox.Show("Düzəliş uğurla yerinə yetirildi!");
                     }
                 }
             }
@@ -157,10 +172,9 @@ namespace QuizSystemApp
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            btnPrevious.Visible = true;
             btnPrevious.Enabled = true;
-            ++questionOrder;
-            MessageBox.Show(questionOrder.ToString());
+            btnPrevious.Visible = true;
+            
 
             for (int i = variants.Count - 1; i >= 0; i--)
             {
@@ -171,33 +185,39 @@ namespace QuizSystemApp
                 variantType--;
             }
 
-            if (questionOrder == questions.Count)
+            if (questionOrder == questions.Count-1)
             {
                 tbQuestionText.Text = "";
                 btnConfirmQuestion.Text = "Testi Tamamla";
                 btnNext.Enabled = false;
+                btnConfirmQuestion.Visible = false;
+                ++questionOrder;
+                MessageBox.Show(questionOrder.ToString());
             }
             else
             {
+                ++questionOrder;
+                MessageBox.Show(questionOrder.ToString());
                 Question question = questions[questionOrder];
                 tbQuestionText.Text = question.Text;
-                btnNext.Enabled = false;
+                btnNext.Enabled = true;
                 btnConfirmQuestion.Text = "Testi düzəlt";
 
                 foreach (var variant in question.Variants)
                 {
                     CreateVariant(variant.variantText);
                 }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(question.correctVariant);
             }
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            MessageBox.Show((--questionOrder).ToString());
             btnNext.Enabled = true;
-            if (--questionOrder >= 0)
+            if (questionOrder >= 1)
             {
-                --questionOrder;
+                questionOrder--;
+                MessageBox.Show(questionOrder.ToString());
                 Question question = questions[questionOrder];
                 tbQuestionText.Text = question.Text;
                 btnConfirmQuestion.Text = "Testi düzəlt";
@@ -215,10 +235,15 @@ namespace QuizSystemApp
                 {
                     CreateVariant(variant.variantText);
                 }
+                cmbVariants.SelectedIndex = cmbVariants.FindStringExact(question.correctVariant);
             }
             else
             {
                 btnPrevious.Enabled = false;
+            }
+            if(variants.Count >= 2)
+            {
+                btnConfirmQuestion.Visible = true;
             }
         }
     }
