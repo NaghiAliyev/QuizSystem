@@ -82,15 +82,15 @@ namespace QuizSystemApp
         private void lblTests_Click(object sender, EventArgs e)
         {
             this.pnlActions.Controls.Clear();
-            AdminExamsPage examsPage = new AdminExamsPage()
+            ExamsPage ExamPage = new ExamsPage()
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,
                 TopMost = true,
                 FormBorderStyle = FormBorderStyle.None
             };
-            this.pnlActions.Controls.Add(examsPage);
-            examsPage.Show();
+            this.pnlActions.Controls.Add(ExamPage);
+            ExamPage.Show();
         }
     }
 }

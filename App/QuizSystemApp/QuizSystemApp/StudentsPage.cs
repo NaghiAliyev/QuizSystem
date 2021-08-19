@@ -46,5 +46,19 @@ namespace QuizSystemApp
         {
             lblHomePage_Click(sender,e);
         }
+
+        private void lblExams_Click(object sender, EventArgs e)
+        {
+            this.pnlActions.Controls.Clear();
+            StudentExamsPage studentExamsPage = new StudentExamsPage(currentStudent, this)
+            {
+                Dock = DockStyle.Fill,
+                TopLevel = false,
+                TopMost = true,
+                FormBorderStyle = FormBorderStyle.None
+            };
+            this.pnlActions.Controls.Add(studentExamsPage);
+            studentExamsPage.Show();
+        }
     }
 }

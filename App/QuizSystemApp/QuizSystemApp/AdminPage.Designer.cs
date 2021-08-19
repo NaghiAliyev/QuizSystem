@@ -49,7 +49,7 @@ namespace QuizSystemApp
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlMenu.Name = "pnlMenu";
-            this.pnlMenu.Size = new System.Drawing.Size(200, 518);
+            this.pnlMenu.Size = new System.Drawing.Size(200, 602);
             this.pnlMenu.TabIndex = 0;
             // 
             // lblTests
@@ -107,14 +107,14 @@ namespace QuizSystemApp
             this.pnlActions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlActions.Location = new System.Drawing.Point(200, 0);
             this.pnlActions.Name = "pnlActions";
-            this.pnlActions.Size = new System.Drawing.Size(617, 518);
+            this.pnlActions.Size = new System.Drawing.Size(734, 602);
             this.pnlActions.TabIndex = 0;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(817, 518);
+            this.ClientSize = new System.Drawing.Size(934, 602);
             this.Controls.Add(this.pnlActions);
             this.Controls.Add(this.pnlMenu);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
