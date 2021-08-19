@@ -19,6 +19,13 @@ namespace QuizSystemApp
         }
         //Global Variables
         Exam exam = new Exam();
+        Dictionary<string, int> period = new Dictionary<string, int>
+        {
+            { "Bütün vaxtlar", 0 },
+            { "Son 1 il", 365 },
+            { "Son 1 həftə", 7 },
+            { "Son gün", 1 }
+        };
 
         //Methods
         private void FillInputs()
@@ -27,7 +34,16 @@ namespace QuizSystemApp
             tbTitle.Enabled = false;
         }
 
-        
+        private void WriteExamsUsage(DateTime lowerLimit, DateTime upperLimit)
+        {
+            int usageCount = 0;
+            using (DBEntities db = new DBEntities())
+            {
+                usageCount = db.TakeExams.Where(x => x.date <= upperLimit && x.date >= lowerLimit).Count();
+            }
+
+            tbTotalExamUsage.Text = usageCount.ToString();
+        }
 
         public void PopulateDGV()
         {
@@ -73,10 +89,11 @@ namespace QuizSystemApp
             btnDelete.Enabled = true;
         }
 
-        private void TeacherExamsPage_Load(object sender, EventArgs e)
+        private void ExamsPage_Load(object sender, EventArgs e)
         {
             btnClear_Click(sender, e);
             PopulateDGV();
+            cmbSelectInterval.SelectedIndex = 0;
         }
 
         private void btnGoToExam_Click(object sender, EventArgs e)
@@ -113,8 +130,8 @@ namespace QuizSystemApp
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 if (MessageBox.Show($"{exam.title} adlı imtahanı silmək istədiyinizə əminsinizmi?", "Sorğu", MessageBoxButtons.YesNoCancel) == DialogResult.Yes)
                 {
                     using (DBEntities db = new DBEntities())
@@ -154,12 +171,44 @@ namespace QuizSystemApp
                         MessageBox.Show("Seçilmiş tələbə sistemdən silindi!", "Bildiriş");
                     }
                 }
-            //}
-            //catch (Exception exception)
-            //{
+            }
+            catch (Exception exception)
+            {
 
-            //    MessageBox.Show("Silmə uğursuz oldu!", "Bildiriş", MessageBoxButtons.OK);
-            //}
+                MessageBox.Show("Silmə uğursuz oldu!", "Bildiriş", MessageBoxButtons.OK);
+            }
         }
+
+        private void cmbSelectInterval_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DateTime lowerLimit;
+            DateTime upperLimit;
+            string key = cmbSelectInterval.SelectedItem.ToString();
+            switch (key)
+            {
+                case "Bütün vaxtlar":
+                    upperLimit = DateTime.Now;
+                    lowerLimit = DateTime.Today.AddYears(-5);
+                    break;
+                case "Son 1 il":
+                    upperLimit = DateTime.Now;
+                    lowerLimit = DateTime.Today.AddYears(-1);
+                    break;
+                case "Son 1 həftə":
+                    upperLimit = DateTime.Now;
+                    lowerLimit = DateTime.Today.AddDays(-7);
+                    break;
+                case "Son gün":
+                    upperLimit = DateTime.Now;
+                    lowerLimit = DateTime.Today.AddDays(-1);
+                    break;
+                default:
+                    upperLimit = DateTime.Now;
+                    lowerLimit = DateTime.Today.AddYears(-5);
+                    break;
+            }
+            WriteExamsUsage(lowerLimit, upperLimit);
+        }
+
     }
 }
