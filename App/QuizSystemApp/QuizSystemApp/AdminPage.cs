@@ -82,7 +82,7 @@ namespace QuizSystemApp
         private void lblTests_Click(object sender, EventArgs e)
         {
             this.pnlActions.Controls.Clear();
-            ExamsPage ExamPage = new ExamsPage()
+            ExamsPage ExamPage = new ExamsPage("Admin")
             {
                 Dock = DockStyle.Fill,
                 TopLevel = false,

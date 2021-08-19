@@ -58,12 +58,6 @@
     <Compile Include="Admin.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AdminExamsPage.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminExamsPage.Designer.cs">
-      <DependentUpon>AdminExamsPage.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminHomePage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,9 +177,6 @@
     <Compile Include="Variant.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminExamsPage.resx">
-      <DependentUpon>AdminExamsPage.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminHomePage.resx">
       <DependentUpon>AdminHomePage.cs</DependentUpon>
     </EmbeddedResource>

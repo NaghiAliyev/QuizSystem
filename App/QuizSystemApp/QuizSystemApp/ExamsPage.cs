@@ -13,9 +13,11 @@ namespace QuizSystemApp
 {
     public partial class ExamsPage : Form
     {
-        public ExamsPage()
+        private string status;
+        public ExamsPage(string _status)
         {
             InitializeComponent();
+            status = _status;
         }
         //Global Variables
         Exam exam = new Exam();
@@ -94,6 +96,18 @@ namespace QuizSystemApp
             btnClear_Click(sender, e);
             PopulateDGV();
             cmbSelectInterval.SelectedIndex = 0;
+            if (status == "Teacher")
+            {
+                lblSelectInterval.Visible = false;
+                tbTotalExamUsage.Visible = false;
+                cmbSelectInterval.Visible = false;
+            }
+            else if (status == "Admin")
+            {
+                lblSelectInterval.Visible = true;
+                tbTotalExamUsage.Visible = true;
+                cmbSelectInterval.Visible = true;
+            }
         }
 
         private void btnGoToExam_Click(object sender, EventArgs e)

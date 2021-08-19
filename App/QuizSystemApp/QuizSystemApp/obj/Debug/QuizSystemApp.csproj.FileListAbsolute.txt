@@ -58,3 +58,6 @@ C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\Quiz
 C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.TeachersPage.resources
 >>>>>>> c33235c3a4a3e6e747ff69beaf7f520508bd6458
 D:\Education\PragmaTech\C#\TaskFromSamirTeacher\Task02\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.ExamsPage.resources
+C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.StudentExamsPage.resources
+C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.StudentTakeExam.resources
+C:\Users\nihad\Desktop\QuizSystem\App\QuizSystemApp\QuizSystemApp\obj\Debug\QuizSystemApp.ExamsPage.resources
