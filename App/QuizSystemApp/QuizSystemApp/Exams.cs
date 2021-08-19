@@ -74,6 +74,10 @@ namespace QuizSystemApp
                 {
                     CreateVariant(variant.variantText);
                 }
+                if (currentExam.Questions.ElementAtOrDefault(0).Variants.Count > 2)
+                {
+                    btnConfirmQuestion.Visible = true;
+                }
                 cmbVariants.SelectedIndex = cmbVariants.FindStringExact(currentExam.Questions.ElementAtOrDefault(0).correctVariant);
                 btnNext.Visible = true;
             }
@@ -130,9 +134,9 @@ namespace QuizSystemApp
                     }
                     else if (btnConfirmQuestion.Text == "Testi düzəlt")
                     {
-                        Question question = currentExam.Questions.ElementAtOrDefault(questionOrder);
-                        db.Entry(question).State = EntityState.Modified;
-                        db.SaveChanges();
+                        //Question question = currentExam.Questions.ElementAtOrDefault(questionOrder);
+                        //db.Entry(question).State = EntityState.Modified;
+                        //db.SaveChanges();
                         MessageBox.Show("Düzəliş uğurla yerinə yetirildi!");
                     }
                 }
